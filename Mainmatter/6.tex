@@ -1,0 +1,13 @@
+% !TEX root = ../main.tex
+\textit{Generating functions}, or \textit{transforms}, are very useful in probability theory as in other fields of mathematics. Several different generating functions are used, depending on the type of random variable. We will discuss two, one that is useful for discrete random variables and the other for continuous random variables.
+
+\subsection{The Probability Generating Function}
+When we study nonnegative, integer-valued random variables, the following function proves to be a useful tool.
+
+\begin{boks}{Definition 3.23}
+  Let $X$ be nonnegative and integer valued. The function
+  \begin{align*}
+    G_X(s) = E[s^X] = \sum_{k=0}^\infty s^kP(X=k) \quad 0 \leq s \leq 1
+  \end{align*}
+  is called the \textit{probability generating function} (pgf) of $X$.
+\end{boks}

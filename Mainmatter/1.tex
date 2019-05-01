@@ -1,0 +1,40 @@
+% !TEX root = ../main.tex
+\begin{boks}{Theorem 1.1 (Law of Total Probability)}
+    Let $B_1, B_2, \ldots$ be a sequence of events such that
+    \begin{enumerate}
+        \item $P(B_k) > 0$ for $k = 1, 2, \ldots$
+        \item $B_i$ og $B_j$ are disjoint whenever $i \neq j$
+        \item $S = \bigcup_{k=1}^\infty B_k$
+    \end{enumerate}
+    Then, for any event $A$, we have
+    \begin{align*}
+        P(A) = \sum_{k=1}^\infty P(A|B_k)P(B_k).
+    \end{align*}
+\end{boks}
+
+\begin{proof}
+First note that
+\begin{align*}
+    A = A \cap S = \bigcup_{k = 1}^\infty (A \cap B_k),
+\end{align*}
+by the distributive law for infinite unions. Since $A \cap B_1, A \cap B_2, \ldots$ are pairwise disjoint,  we get
+\begin{align*}
+    P(A) = P(A \cap B_k) = \sum_{k = 1}^\infty P(A|B_k)P(B_k).
+\end{align*}
+Which proves the theorem. Note that the result also holds for finite sequences.
+\end{proof}
+
+\begin{boks}{Corollary 1.6}
+If $0 < P(B) < 1$, for $B\subseteq S$, then
+\begin{align*}
+    P(A) = P(A|B)P(B) + P(A|B^c)P(B^c)
+\end{align*}
+\end{boks}
+
+\begin{boks}{Proposition 1.11 (Bayes' Formula)}
+Under the same assumptions as in the law of total probability and if $P(A) > 0$, then for any event $B_j$, we have
+\begin{align*}
+    P(B_j|A) &= \frac{P(A|B_j)P(B_j)}{\sum_{k=1}^\infty P(A|B_k)P(B_k)} \\
+    &= \frac{P(A|B_j)P(B_j)}{P(A)} \qquad \text{according to the LTP.}
+\end{align*}
+\end{boks}

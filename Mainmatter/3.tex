@@ -1,0 +1,136 @@
+% !TEX root = ../main.tex
+\begin{boks}{Definition 2.5}
+If the cdf $F$ is a continuous and differentiable function, then $X$ is said to be a \textit{continuous random variable}.
+\end{boks}
+
+\begin{boks}{Proposition 2.3}
+If $F$ is the cdf of any random variable, $F$ has the following properties:
+\begin{enumerate}
+    \item It is nondecreasing
+    \item It is right-continuous
+    \item It has the limits $F(-\infty) = 0$ and $F(\infty) = 1$ (where the limits may or may not be attained at finite $x$).
+\end{enumerate}
+\end{boks}
+
+\begin{boks}{Proposition 2.4}
+Let $X$ be any random variable with cdf $F$. Then
+\begin{enumerate}
+    \item $P(a < X \leq b) = F(b) - F(a), \quad a \leq b$
+    \item $P(X > x) = 1 - F(x), \quad x \in \mathbb{R}$
+    \item $F$ is continuous from the right with limit form the left and increasing
+\end{enumerate}
+\end{boks}
+
+\begin{boks}{Definition 2.6}
+The function $f(x) = F'(x)$ is called the \textit{probability density function} (pdf) of $X$.
+\end{boks}
+
+\begin{boks}{Proposition 2.5}
+Let X be a continuous random variable with pdf $f$ and cdf $F$. Then
+\begin{enumerate}
+    \item $F(x) = \int_{-\infty}^x f(t)dt, \quad x \in \mathbb{R}$
+    \item $f(x) = F'(x), \quad x \in \mathbb{R}$
+    \item For $B \subseteq \mathbb{R}, \quad P(X\in B) = \int_B f(x)dx$
+\end{enumerate}
+\end{boks}
+
+\begin{boks}{Proposition 2.6}
+A function $f$ is a possible pdf of some continuos random variable if and only if
+\begin{enumerate}
+    \item $f(x) \geq 0, \quad x \in \mathbb{R}$
+    \item $\int_{-\infty}^\infty f(x)dx = 1$
+\end{enumerate}
+\end{boks}
+
+\begin{boks}{Proposition 2.8}
+Let $X$ be a continuous random variable with pdf $X$, let $g$ be a strictly increasing or strictly decreasing, differentiable function, and let $Y = g(X)$. Then $Y$ has pdf
+\begin{align*}
+    f_Y(y) = \bigg| \frac{d}{dy}g^{-1}(y)\bigg| f_X(g^{-1}(y))
+\end{align*}
+for $y$ in range of $Y$.
+\end{boks}
+
+\begin{boks}{Defintion 2.9}
+Let $X$ be a continuous random variable with pdf $f$. The \textit{expected value} of $X$ is defined as
+\begin{align*}
+    E[X] = \int_{-\infty}^\infty xf(x)dx = \int_\mathbb{R} xf(x)dx,
+\end{align*}
+notice that the last equality is not always satisfied, but for the purpose of this course it is.
+\end{boks}
+
+\begin{boks}{Proposition 2.10}
+Let $X$ be a continuous random variable with range $[0, \infty)$. Then
+\begin{align*}
+    E[x] = \int_0^\infty P(X > x)dx
+\end{align*}
+\end{boks}
+
+\begin{boks}{Proposition 2.11 (Linearity for the Expectation)}
+Let $X$ be any random variable, and let $a$ and $b$ be real numbers. Then
+\begin{align*}
+    E[aX + b] = aE[X] + b
+\end{align*}
+\end{boks}
+
+\begin{proof}
+We prove this in the continuous case, for $a > 0$. Let $Y = aX + b$, and note that $Y$ is a continuous random variable, which by proposition 2.8 has pdf
+\begin{align*}
+    f_Y(y) = \frac{1}{a} f_X\bigg(\frac{y-b}{a}\bigg)
+\end{align*}
+and by definition, the expected value of $Y$ is
+\begin{align*}
+    E[Y] = \int_{-\infty}^\infty yf_Y(y)dy = \frac{1}{a}\int_{-\infty}^\infty yf_X\bigg(\frac{y-b}{a}\bigg)dy
+\end{align*}
+where the variable $y=ax+b$ gives $dy = a \ dx$ and hence
+\begin{align*}
+    E[Y] &= \int_{-\infty}^\infty (ax + b)f_X(x)dx \\
+    &= a \int_{-\infty}^\infty xf_X(x)dx + b \int_{-\infty}^\infty f_X(x)dx \\
+    &= aE[X] + b
+\end{align*}
+and we are done.
+\end{proof}
+
+\begin{boks}{Definition 2.10}
+Let $X$ be a random variable with expected value $\mu$. The \textit{variance} of $X$ is defined as
+\begin{align*}
+    Var[X] = E\Big[ (X - \mu)^2 \Big]
+\end{align*}
+\end{boks}
+
+\begin{boks}{Definition 2.11}
+Let $X$ be a random variable with variance $\sigma^2 = Var[X]$. The \textit{standard deviation} of $X$ is then defined as $\sigma = \sqrt{Var[X]}$.
+\end{boks}
+
+\begin{boks}{Corollary 2.2}
+\begin{align*}
+    Var[X] = E[X^2] - (E[X])^2
+\end{align*}
+\end{boks}
+
+\begin{proof}
+By proposition 2.12, we have
+\begin{align*}
+    Var[X] &= E\Big[(X-\mu)^2\Big] = \int_{-\infty}^\infty (x - \mu)^2 dx\\
+    &= \int_{-\infty}^\infty (x^2 - 2x\mu + \mu^2) f(x) dx \\
+    &= \int_{-\infty}^\infty x^2 f(x) dx - 2\mu \int_{-\infty}^\infty x f(x) dx + \mu^2\int_{-\infty}^\infty f(x)dx\\
+    &=E[X^2] - 2\mu E[X] + \mu^2\\
+    &= E[X^2] - 2 E[X]^2 + E[X]^2\\
+    &= E[X^2] - E[X]^2.
+\end{align*}
+\end{proof}
+
+\begin{boks}{Proposition 2.14 (Chebyshev's Inequality)}
+Let $X$ be any random variable with mean $\mu$ and variance $\sigma^2$. For any consatn $c > 0$, we have
+\begin{align*}
+    P(|X - \mu| \geq c\sigma) \leq \frac{1}{c^2}.
+\end{align*}
+\end{boks}
+
+\begin{proof}
+Let us prove the continuous case. Fix $c$ and let $B$ be the set $\{x \in \mathbb{R} : |x - \mu| \geq c\sigma\}$. We get
+\begin{align*}
+    \sigma^2 &= E[(X - \mu)^2] = \int_{-\infty}^\infty (x-\mu)^2f(x)dx=\int_\mathbb{R}(x-\mu)^2f(x)dx\\
+    &\geq \int_B(x-\mu)^2f(x)dx \geq c^2\sigma^2\int_Bf(x)dx = c^2\sigma^2P(X\in B).
+\end{align*}
+Which gives the desired inequality.
+\end{proof}
