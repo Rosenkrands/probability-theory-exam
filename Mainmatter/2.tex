@@ -1,0 +1,76 @@
+% !TEX root = ../main.tex
+\begin{boks}{Definition 2.1}
+A random variable is a real random variable that gets its values from a random experiment.
+\begin{align*}
+    X: \ S \rightarrow \mathbb{R}.
+\end{align*}
+\end{boks}
+
+\begin{boks}{Definition 2.2}
+If the range of $X$ is countable, then $X$ is called a \textit{discrete random variable}.
+\end{boks}
+
+\begin{boks}{Definition 2.3}
+Let $X$ be a discrete random variable with range $\{x_1, x_2, \ldots\}$ (finite or countably infinite). The function
+\begin{align*}
+    p(x_k) = P(X = x_k), \quad k = 1,2,\ldots
+\end{align*}
+is called the \textit{probability mass function} (pmf) of $X$.
+\end{boks}
+
+\begin{boks}{Proposition 2.1}
+A function $p$ is a possible pmf of a discrete random variable on the range $\{1,2,\ldots\}$ if and only if
+\begin{enumerate}
+    \item $p(x_k)\geq 0 \quad \text{for} \ k = 1,2,\ldots$
+    \item $\sum_{k=1}^\infty p(x_k) = 1$
+\end{enumerate}
+\end{boks}
+
+\begin{boks}{Definition 2.4}
+Let $X$ be any random variable. The function
+\begin{align*}
+    F(x) = P(X\leq x), \quad \text{for} \ x\in \mathbb{R},
+\end{align*}
+is called the (\textit{cumulative}) \textit{distribution function} (cdf) of $X$.
+\end{boks}
+
+\begin{boks}{Defintion 2.8}
+Let $X$ be a discrete random variable with range $\{x_1,x_2, \ldots\}$ (finite or countably infinite) and probability mass function $p$. The \textit{expected value} of $X$ is defined as
+\begin{align*}
+    E[X] = \sum_{k=1}^\infty x_k p(x_k).
+\end{align*}
+\end{boks}
+
+\begin{boks}{Proposition 2.9}
+Let $X$ be a discrete random variable with range $\{0,1,\ldots\}$. Then
+\begin{align*}
+    E[X] = \sum_{n=0}^\infty P(X > n)
+\end{align*}
+\end{boks}
+
+\begin{proof}
+Note that $k= \sum_{n=1}^k 1$, and use the definition of expected value to obtain
+\begin{align*}
+    E[X] &= \sum_{k=1}^\infty kP(X = k) = \sum_{k=1}^\infty \sum_{n=1}^k P(X = k) \\
+    &= \sum_{n=1}^\infty \sum_{k=n}^\infty P(X = k) = \sum_{n=1}^\infty P(X \geq n)\\
+    &= \sum_{n=0}^\infty P(X > n)
+\end{align*}
+\end{proof}
+
+\begin{boks}{Proposition 2.11 (Linearity for the Expectation)}
+Let $X$ be any random variable, and let $a$ and $b$ be real numbers. Then
+\begin{align*}
+    E[aX + b] = aE[X] + b
+\end{align*}
+\end{boks}
+
+\begin{proof}
+We prove this in the discrete case, for $a > 0$. Let $Y = aX + b$, and note that $Y$ is a discrete random variable and by definition 2.8 expected value
+\begin{align*}
+    E[Y] &= \sum_{k=1}^\infty y_kp_Y(y_k) = \sum_{k=1}^\infty y_kp_X\bigg(\frac{y_k - b}{a}\bigg)\\
+    &= \sum_{k=1}^\infty (ax_k + b) p_X(x_k) \\
+    &= a\sum_{k=1}^\infty x_kp_X(x_k) + b \sum_{k=1}^\infty p_X(x_k)\\
+    &= aE[X] + b
+\end{align*}
+and we are done. \textbf{Måske skal man bruge 2.12 her (side 102).}
+\end{proof}

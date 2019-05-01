@@ -1,0 +1,174 @@
+% !TEX root = ../main.tex
+\begin{boks}{Definition 3.10}
+  Let $y$ be random variable and $B$ an event with $P(B)>0$. The \textit{conditional expectation} of $Y$ given $B$ is defined as
+  \begin{align*}
+    E[Y|B] =  \begin{cases}
+                \sum_{k = 1}^\infty y_k P(Y = y_k|B) & \text{if $Y$ is discrete with range $\{y_1, y_2, \ldots\}$}\\
+                \int_{-\infty}^\infty yf_Y(y|B)dy & \text{if $Y$ is continuous}
+              \end{cases}
+  \end{align*}
+\end{boks}
+
+\begin{boks}{Definition 3.11}
+  Suppose that $X$ and $Y$ are discrete. We define
+  \begin{align*}
+    E[Y|X=x_j] = \sum_{k=1}^\infty y_k p_Y(y_k|x_j).
+  \end{align*}
+\end{boks}
+
+\begin{boks}{Definition 3.12}
+  Suppose that $X$ and $Y$ are jointly continuous. We define
+  \begin{align*}
+    E[Y|X = x] = \int_{-\infty}^\infty y f_Y(y|x)dx.
+  \end{align*}
+\end{boks}
+
+Following the usual intuitive interpretation, this is the expected value for $Y$ if we know that $X = x$. The law of total expectation now takes the following form.
+
+\begin{boks}
+  Suppose that $X$ and $Y$ are jointly continuous. Then
+  \begin{align*}
+    E[Y] = \int_{-\infty}^\infty E[Y|X = x] f_X(x)dx.
+  \end{align*}
+\end{boks}
+
+\subsection{Conditional Expectation as a Random Variable}
+
+\begin{boks}{Definition 3.13}
+  The \textit{conditional expectation} of $Y$ given $X$, $E[Y|X]$, is a random variable that equals $E[Y|X = x]$ whenever $X = x$.
+\end{boks}
+
+\begin{boks}{Corollary 3.5}
+  \begin{align*}
+    E[Y] = E\Big[E[Y|X]\Big]
+  \end{align*}
+\end{boks}
+
+\begin{boks}{Definition 3.14}
+  Let $g(X)$ be a predictor of $Y$. The \textit{mean square error} is defined as
+  \begin{align*}
+    E\Big[(Y - g(X))^2\Big].
+  \end{align*}
+\end{boks}
+
+\begin{boks}{Proposition 3.18}
+  Among all predictors $g(X)$ of $Y$, the mean square error is minimized by $E[Y|X]$.
+\end{boks}
+
+We omit the proof and instead refer to an intuitive argument. Suppose that we want to predcit $Y$ as much as possible by a constant value $c$. Then, we want to minimize $E[(Y - c)^2]$, and with $\mu = E[Y]$ we get
+\begin{align*}
+  E\Big[(Y - c)^2\Big] &= E\Big[(Y - \mu + \mu - c)^2\Big]\\
+  &= E\Big[(Y - \mu)^2] + 2(\mu - c)E[(Y - \mu)] + (\mu - c)^2\\
+  &= Var[Y] + (\mu - c)^2
+\end{align*}
+since $E[Y - \mu] = 0$. But the last expression is minimized when $\mu = c$ and hence $\mu$ is the best predictor of $Y$ among all constants. This is not too surprising; if we do not know anything about $Y$, the best guess should be the expected value $E[Y]$. Now, if we observe another random variable $X$, the same ought to be true: $Y$ is best predicted by its expected value given the random variable $X$, that is, $E[Y|X]$.
+
+\subsection{Conditional Variance}
+\begin{boks}{Definition 3.15}
+  The \textit{conditional variance} of $Y$ given $X$ is defined as
+  \begin{align*}
+    Var[Y|X] = E\Big[(Y - E[Y|X])^2|X\Big].
+  \end{align*}
+\end{boks}
+
+Note that the conditonal varince is also a random variable and we think of it as the variance of $Y$ given the value $X$. In particular,  if we have the observed $X = x$, then we can denote and defined
+\begin{align*}
+  Var[Y|X = x] = E\Big[(Y - E[Y|X = x])^2|X = x\Big].
+\end{align*}
+also note that if $X$ and $Y$ are independent, $E[Y|X]=E[Y]$, and the definition boils down to the regular variance. There is an analog of Corollary 2.2, which we leave to the reader to prove.
+
+\begin{boks}{Corollary 3.7}
+  \begin{align*}
+    Var[Y|X] = E\Big[[Y^2|X] - (E[Y|X])^2
+  \end{align*}
+\end{boks}
+
+There is also a ``law of total variance'', which looks slightly more complicated than that of total expectation.
+
+\begin{boks}{Proposition 3.19}
+  \begin{align*}
+    Var[Y] = Var\Big[ E[Y|X] \Big] + E\Big[Var[Y|X]\Big]
+  \end{align*}
+\end{boks}
+
+\subsection{Covarince and Correlation}
+
+\begin{boks}{Definition 3.16}
+  The \textit{covariance} of $X$ and $Y$ is defined as
+  \begin{align*}
+    Cov[X, Y] = E\Big[(X - E[X])(Y - E[Y])\Big].
+  \end{align*}
+\end{boks}
+
+\begin{boks}{Proposition 3.20}
+  \begin{align*}
+    Cov[X, Y] = E[XY] - E[X]E[Y]
+  \end{align*}
+\end{boks}
+
+\begin{boks}{Corollary 3.8}
+  \textit{If $X$ and $Y$ are independent, then $Cov[X, Y] = 0$.}
+\end{boks}
+
+\begin{boks}{Proposition 3.21}
+  \begin{align*}
+    Var[X + Y = Var[x] + Var[Y] + 2Cov[X, Y].
+  \end{align*}
+\end{boks}
+
+\begin{proof}
+  By the definition of variance and covariance and repeated use of properties of expected values, we get
+  \begin{align*}
+    Var[X + Y] &= E\Big[(X + Y - E[X + Y])^2]\\
+    &= E\Big[(X - E[X] + Y - E[Y])^2]\\
+    &= E\Big[(X - E[X])^2 + (Y - E[Y])^2 + 2(X - E[X])(Y - E[Y])]\\
+    &= Var[X] + Var[Y] + Cov[X, Y]
+  \end{align*}
+  and we are done.
+\end{proof}
+
+\begin{boks}{Proposition 3.22}
+  Let $X, Y$, and $Z$ be random variables and let $a$ and $b$ be real numbers. Then
+  \begin{enumerate}
+    \item $Cov[X, X] = Var[X]$
+    \item $Cov[aX, bX] = abCov[X, Y]$
+    \item $Cov[X + Y, Z] = Cov[X, Z] + Cov[Y, Z]$
+  \end{enumerate}
+  together these properties indicate that covariance is \textit{bilinear}.
+\end{boks}
+
+\subsection{The Correlation Coefficient}
+
+\begin{boks}{Definition 3.17}
+  The \textit{correlation coefficient} of $X$ and $Y$ is defined as
+  \begin{align*}
+    \rho(X, Y) = \frac{Cov[X, Y]}{\sqrt{Var[X]Var[Y]}}.
+  \end{align*}
+\end{boks}
+
+The correlation coefficient is dimensionless. To demonstrate this, take $a, b > 0$ and note that
+\begin{align*}
+  \rho(aX, bY) &= \frac{Cov[aX, bY]}{\sqrt{Var[aX]Var[bY]}}\\
+  &= \frac{abCov[X, Y]}{\sqrt{a^2Var[X]b^2Var[Y]}} = \rho(X, Y).
+\end{align*}
+We also call $\rho(X, Y)$ simply the correlation between $X$ and $Y$. Here are som good properties of the correlation coefficient.
+
+\begin{boks}{Proposition 3.25}
+  The correlation coefficient of any pair of random variables $X$ and $Y$ satisfies
+  \begin{enumerate}
+    \item $-1\leq\rho(X, Y)\leq1$
+    \item If $X$ and $Y$ are independent, then $\rho(X, Y) = 1$
+    \item $\rho(X, Y) = 1$ if and only if $Y = aX + b$,  where $a > 0$
+    \item $\rho(X, Y) = -1$ if and only if $Y = aX + b$,  where $a < 0$
+  \end{enumerate}
+\end{boks}
+
+\begin{proof}
+  Let $Var[X] = \sigma_1^2$ and $Var[Y] = \sigma_2^2$. For (a), first apply Proposition 3.21 to the random variables $X/\sigma_1$ and $Y/\sigma_2$ and use the properties of the variance and covariance to obtain
+  \begin{align*}
+    0 \leq Var\bigg[ \frac{X}{\sigma_1} + \frac{Y}{\sigma_2} \bigg] = \frac{Var[X]}{\sigma_1} + \frac{Var[Y]}{\sigma_2} + \frac{2Cov[X, Y]}{\sigma_1\sigma_2} = 2 + 2\rho
+  \end{align*}
+  which gives $\rho\geq1$. To show that $\rho\leq1$, instead use $X/\sigma_1$ and $-Y/\sigma_2$. Part (b) follows from Corollary 3.8, and parts (c) and (d) follows from Proposition 2.16, applied to tha random variables $X/\sigma_1 - Y/\sigma_2$ and $X/\sigma_1 + Y/\sigma_2$, respectively. Note that this also gives $a$ and $b$ expressed in terms of the means, variances, and correlation coefficeinet (see problem 90).
+\end{proof}
+
+\textbf{Her mangler der bivariate normal!}

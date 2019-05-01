@@ -1,0 +1,161 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lipsum}
+\usepackage{enumitem}
+\setlist{label=(\alph*), topsep=0cm}
+\usepackage{amsmath, amssymb}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[bb=boondox]{mathalfa}
+\usepackage{xcolor}
+\usepackage{chngcntr}
+\usepackage{mathtools}
+\counterwithin{equation}{section}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\newcommand{\upint}[2]{
+  \overline{\int_{#1}^{#2}}
+}
+\newcommand{\loint}[2]{
+  \underline{\int_{#1}^{#2}}
+}
+
+% Margen
+\usepackage[left=2.5cm, right=2.5cm, top=3cm, bottom=3cm]{geometry}
+
+% Eksempel Enviroment
+\newcounter{eksempel}[section]
+\newenvironment{eksempel}[1][]{\refstepcounter{eksempel}\par\medskip
+   \noindent \textbf{Eksempel~\theeksempel. #1} \rmfamily}{\medskip}
+   
+% Spacing omkring align enviroment
+% \usepackage{etoolbox}
+% \newcommand{\zerodisplayskips}{%
+%   \setlength{\abovedisplayskip}{-8pt}%       % Spacing over Align
+%   \setlength{\belowdisplayskip}{2pt}%        % Spacing under Align
+%   \setlength{\abovedisplayshortskip}{0pt}%   % Spacing over Equation
+%   \setlength{\belowdisplayshortskip}{0pt}}%  % Spacing under Equation
+% \appto{\normalsize}{\zerodisplayskips}%
+% \appto{\small}{\zerodisplayskips}%
+% \appto{\footnotesize}{\zerodisplayskips}%
+
+%	¤¤ Afsnitsformatering ¤¤ %
+\setlength{\parindent}{0mm}           		% Stoerrelse af indryk
+\setlength{\parskip}{3mm}          			% Afstand mellem afsnit ved brug af double Enter
+\linespread{1,1}							% Linie afstand
+
+\usepackage{mdframed}
+\mdtheorem[%
+linecolor=black,
+  linewidth=.5pt,
+  backgroundcolor=gray!10,
+  frametitlerule=true,
+  frametitlefont=\bfseries,
+  frametitlebackgroundcolor=gray!25,
+  innertopmargin=\topskip]{theorem}{Theorem}[section]
+
+\mdtheorem[%
+linecolor=black,
+  linewidth=.5pt,
+  backgroundcolor=gray!10,
+  frametitlerule=true,
+  frametitlefont=\bfseries,
+  frametitlebackgroundcolor=gray!25,
+  innertopmargin=\topskip]{corollary}[theorem]{Korollar}
+
+\mdtheorem[%
+linecolor=black,
+  linewidth=.5pt,
+  backgroundcolor=gray!10,
+  frametitlerule=true,
+  frametitlefont=\bfseries,
+  frametitlebackgroundcolor=gray!25,
+  innertopmargin=\topskip]{lemma}[theorem]{Lemma}
+
+\mdtheorem[%
+linecolor=black,
+  linewidth=.5pt,
+  backgroundcolor=gray!10,
+  frametitlerule=true,
+  frametitlefont=\bfseries,
+  frametitlebackgroundcolor=gray!25,
+  innertopmargin=\topskip]{proposition}[theorem]{Proposition}
+  
+\mdtheorem[%
+linecolor=black,
+  linewidth=.5pt,
+  backgroundcolor=gray!10,
+  frametitlerule=true,
+  frametitlefont=\bfseries,
+  frametitlebackgroundcolor=gray!25,
+  innertopmargin=\topskip]{definition}[theorem]{Definition}
+  
+%   Stort spørgsmålstegn kommando
+\newcommand{\?}{
+\begin{center}
+    \huge{\textbf{?}}    
+\end{center}
+}
+
+% Math in section
+\newcommand{\mbf}[1]{$\mathbf{#1}$}
+
+%kasse til sætninger mv.
+\newenvironment{boks}[1]{\begin{mdframed}\textbf{#1.}}{\end{mdframed}}
+
+\begin{document}
+
+\input{Frontmatter/Titlepage.tex}
+
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+
+\section{Basics of probability (incl. combinatorics, law of total probability and Bayes' formula).}
+\input{Mainmatter/1.tex}
+\newpage
+
+\section{Discrete stochastic variables and distributions (incl. means and variances).}
+\input{Mainmatter/2.tex}
+\newpage
+
+\section{Continuous stochastic variables and distributions (incl. means and variances).}
+\input{Mainmatter/3.tex}
+\newpage
+
+\section{Two random variables: select from topics such as joint distribution, conditional distribution, independence and convolution.}
+\input{Mainmatter/4.tex}
+\newpage
+
+\section{Two random variables: select from topics such as covariance and correlation, conditional expectation, conditional variance and the bivariate normal distribution.}
+\input{Mainmatter/5.tex}
+\newpage
+
+\section{Generating functions (possibly with a focus on how probability generating functions relate to thinning of a Poisson process).}
+\input{Mainmatter/6.tex}
+\newpage
+
+\section{Limit theorems.}
+\input{Mainmatter/7.tex}
+\newpage
+
+\section{Markov chains.}
+\input{Mainmatter/8.tex}
+\newpage
+
+\section{Stochastic simulation.}
+\input{Mainmatter/9.tex}
+\newpage
+
+\end{document}
