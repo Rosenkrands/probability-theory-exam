@@ -11,3 +11,42 @@ When we study nonnegative, integer-valued random variables, the following functi
   \end{align*}
   is called the \textit{probability generating function} (pgf) of $X$.
 \end{boks}
+
+\begin{boks}{Corollary 3.12}
+  Let $X$ be a nonnegative and integer valued with pgf $G_X$. then
+  \begin{align*}
+    G_X(0) = p_X(0) \quad \text{and} \quad G_X(1) = 1
+  \end{align*}
+\end{boks}
+
+\begin{boks}{Proposition 3.36}
+  Let $X$ be nonnegative and integer valued with pgf $G_X$. then
+  \begin{align*}
+    p_X(k) = \frac{G_X^{(k)}(0)}{k!}, \quad k = 0,1,\ldots
+  \end{align*}
+  where $G_X^{(k)}(0)$ denotes the $k$th derivative of $G_X$.
+\end{boks}
+
+\begin{boks}{Proposition 3.37}
+  If $X$ has pgf $G_X$, Then
+  \begin{align*}
+    E[X] = G'_X(1) \quad \text{and} \quad Var[X] = G''_X(1) + G'_X(1) - G'_X(1)^2
+  \end{align*}
+\end{boks}
+
+\begin{boks}{Proposition 3.38}
+  Let $X_1, X_2, \ldots, X_n$ be independent random variables with pgfs $G_1, G_2, \ldots, G_n$ respectively and let $S_n = X_1 + X_2 + \cdots + X_n$. Then $S_n$ has pgf
+  \begin{align*}
+    G_{S_n}(s) = G_1(s)G_2(s)\cdots G_n(s), \quad 0 \leq s \leq 1
+  \end{align*}
+\end{boks}
+
+\begin{proof}
+  Since $X_1, \ldots, X_n$ are independent, the random variables $s^{X_1}, \ldots, s^{X_n}$ are also independent for each $s$ in [0,1], and we get
+  \begin{align*}
+    G_{S_n}(s) &= E[s^{X_1 + X_2 + \cdots + X_n}]\\
+    &= E[s^{X_1}]E[s^{X_2}] \cdots E[s^{X_n}]\\
+    &= G_1(s)G_2(s) \cdots G_n(s)
+  \end{align*}
+  and we are done.
+\end{proof}
