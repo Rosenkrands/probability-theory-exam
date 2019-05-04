@@ -5,14 +5,13 @@
 \usepackage{lipsum}
 \usepackage{enumitem}
 \setlist{label=(\alph*), topsep=0cm}
-\usepackage{amsmath, amssymb}
+\usepackage{amsmath, amssymb, amsthm}
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
   \hskip -\arraycolsep
   \let\@ifnextchar\new@ifnextchar
   \array{#1}}
 \makeatother
-\usepackage{amsthm}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage[bb=boondox]{mathalfa}
@@ -36,7 +35,7 @@
 \newcounter{eksempel}[section]
 \newenvironment{eksempel}[1][]{\refstepcounter{eksempel}\par\medskip
    \noindent \textbf{Eksempel~\theeksempel. #1} \rmfamily}{\medskip}
-   
+
 % Spacing omkring align enviroment
 % \usepackage{etoolbox}
 % \newcommand{\zerodisplayskips}{%
@@ -89,7 +88,7 @@ linecolor=black,
   frametitlefont=\bfseries,
   frametitlebackgroundcolor=gray!25,
   innertopmargin=\topskip]{proposition}[theorem]{Proposition}
-  
+
 \mdtheorem[%
 linecolor=black,
   linewidth=.5pt,
@@ -98,11 +97,11 @@ linecolor=black,
   frametitlefont=\bfseries,
   frametitlebackgroundcolor=gray!25,
   innertopmargin=\topskip]{definition}[theorem]{Definition}
-  
+
 %   Stort spørgsmålstegn kommando
 \newcommand{\?}{
 \begin{center}
-    \huge{\textbf{?}}    
+    \huge{\textbf{?}}
 \end{center}
 }
 

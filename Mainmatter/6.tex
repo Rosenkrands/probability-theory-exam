@@ -159,7 +159,7 @@ The number $E[X^n]$ is called the $n$th \textit{moment} of $X$, hence the term m
   Consider a Poisson process with rate $\lambda$, where $X(t)$ is the number of points in an interval of length $t$.
   Then
   \begin{align*}
-    X(t) ~ \text{Poi}(\lambda t)
+    X(t) \sim \text{Poi}(\lambda t)
   \end{align*}
 \end{boks}
 Recall that the parameter in the Poisson distribution is also the expected value.
@@ -175,4 +175,8 @@ In practical applications, we need to be careful to use the same time units for 
     \item $T_1, T_2, \ldots$ are independent and exp($\lambda$)
     \item $X(T_1), X(T_2), \ldots$ are independent and $X(t_j) ~ Poi(\lambda t_j), \quad j = 1, 2, \ldots$
   \end{enumerate}
+\end{boks}
+
+\begin{boks}{Proposition 3.43}
+  Consider a Poisson process with rate $\lambda$. If there are $n$ points in the time interval $[0,t]$, their
 \end{boks}
