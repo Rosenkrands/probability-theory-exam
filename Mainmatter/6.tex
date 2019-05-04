@@ -173,10 +173,88 @@ In practical applications, we need to be careful to use the same time units for 
   In a Poisson process with rate $\lambda$
   \begin{enumerate}
     \item $T_1, T_2, \ldots$ are independent and exp($\lambda$)
-    \item $X(T_1), X(T_2), \ldots$ are independent and $X(t_j) ~ Poi(\lambda t_j), \quad j = 1, 2, \ldots$
+    \item $X(T_1), X(T_2), \ldots$ are independent and $X(t_j) \sim Poi(\lambda t_j), \quad j = 1, 2, \ldots$
   \end{enumerate}
 \end{boks}
 
 \begin{boks}{Proposition 3.43}
-  Consider a Poisson process with rate $\lambda$. If there are $n$ points in the time interval $[0,t]$, their
+  Consider a Poisson process with rate $\lambda$. If there are $n$ points in the time interval $[0,t]$, their joint distribution is the same as that of $n$ i.i.d.\ random variables that are unif$[0,t]$
 \end{boks}
+
+The property in the proposition is called the \emph{order statistic property} of the Poisson process since the points are distributed as $n$ order statistics from a uniform distribution on $[0,t]$.
+The proof is similar to what we did previously in the case of $n = 1$,
+invoking Proposition 3.32.
+
+\subsection{Thinning and Superposition}
+Suppose now that we have a Poisson process with rate $\lambda$, where we do not observe every point, either by accident or on purpose.
+For example, phone calls arrive as a Poisson process, but calls are lost when the line is busy.
+Hurricanes ate formed according to a Poisson process, but we are interested only in those that make landfall.
+These examples of \emph{thinning} of a Poisson process.
+
+We assume that each point is observed with probability $p$ and that different points are observed independent of each other.
+Then, it turns out that the thinned process is also Poisson process.
+
+\begin{boks}{Proposition 3.44}
+  The thinned process is a Poisson process with rate $\lambda p$.
+\end{boks}
+
+\begin{proof}
+  We work with characterization (b) in Proposition 3.42. Clearly, the numbers of observed points in disjoint intervals are independent.
+  To show the Poisson distribution, we use probability generating functions.
+  Consider an interval of length $t$, letting $X(t)$ be the total number of points and $X_p(t)$ be the number of observed points in this interval.
+  Then,
+  \begin{align*}
+    X_p(t) = \sum_{k = 1}^{X(t)} I_k
+  \end{align*}
+  where $I_k$ is 1 if the $k$th point was observed and 0 otherwise. By Proposition 3.39, $X_p(t)$ has pgf
+  \begin{align*}
+    G_{X_p}(s) = G_{X(t)}(G_{I}(s))
+  \end{align*}
+  where
+  \begin{align*}
+    G_{X(t)}(s) = e^{\lambda t (s - 1)}
+  \end{align*}
+  and
+  \begin{align*}
+    G_I(s) = 1 - p + ps
+  \end{align*}
+  and we get
+  \begin{align*}
+    G_{X_p}(s) = e^{\lambda t(1 - p + ps - 1)} = e^{\lambda pt(s - 1)}
+  \end{align*}
+  which we recognize as the pgf of a Poisson distribution with parameter $\lambda pt$.
+\end{proof}
+
+\begin{boks}{Proposition 3.45}
+  The processes of observed and unobserved points are independent.
+\end{boks}
+
+\begin{proof}
+  Fix an interval of length $t$, let $X(t)$ be the total number of points, and $X_p(t)$ and $X_{1 - p}(t)$ the number of observed and unobserved points, respectively.
+  Hence, $X(t) = X_p(t) + X_{1 - p}(t)$ and by Proposition 3.44, we obtain
+  \begin{align*}
+    X_p(t) \sim \poi(\lambda pt) \quad \text{and} \quad X_{1 - p}(t) \sim \poi(\lambda(1 - p)t).
+  \end{align*}
+  Also given that $X(t) = n$, the number of observed points has a binomial distribution with parameters $n$ and $p$. We get
+  \begin{align*}
+    P(X_p(t) = j, X_{1-p}(t) = k) &= P(X_p(t) = j, X(t) = k + j)\\
+    &= P(X_p(t) = j | X(t) = k + j)P(X(t) = k + j)\\
+    &=\binom{k + j}{j} p^j(1 - p)^ke^{-\lambda t} \frac{(\lambda t)^{k + j}}{(k + j)!}\\
+    &= \frac{(k + j)!}{k!j!}p^j(1 - p)^ke^{-\lambda t} \frac{(\lambda t)^{k + j}}{(k + j)!}\\
+    &= e^{-\lambda pt} \frac{(\lambda pt)^j}{j!}e^{-\lambda(1 - p)t} \frac{(\lambda(1 - p)t)^k}{k!}\\
+    &= P(X_p(t) = j)P(X_{1 - p}(t) = k)
+  \end{align*}
+\end{proof}
+
+\begin{boks}{Proposition 3.46}
+  Consider two independent Poisson processes with rate $\lambda_1$ and $\lambda_2$, respectively. The superposition of the two processes is a Poisson process with rate $\lambda_1 + \lambda_2$.
+\end{boks}
+
+\begin{proof}
+  For this we use characterization (a) in Proposition 3.42.
+  Fix a time where there is a point in either of the two processes.
+  Denote the time until the next point in the first process by $S$ and the corresponding time in the second by $T$.
+  Since the two processes are independent, $S$ and $T$ are independent random variables.
+  Also, by the memoryless property, the distributions are $S \sim exp(\lambda_1)$ and $T \sim exp(\lambda_2)$, regardless of which of the two processes the last point came from. Hence, the time until the next point in the superposition process is the minimum of $S$ and $T$, and by example 3.50, this is $exp(\lambda_1 + \lambda_2)$.
+  Thus, the superposition process i s a Poisson process with rate $\lambda_1 + \lambda_2$ and we are done.
+\end{proof}
