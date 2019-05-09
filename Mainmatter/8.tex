@@ -1,1 +1,113 @@
 % !TEX root = ../main.tex
+Many real-world applications of probability theory have one particular feature that data are collected sequentially in time.
+A few examples are weather data, stock market indices, air-pollution data, demographic data, and political tracking polls.
+These also have antoher feature in common that successive observations are typically not independent.
+We refer to any such collection of abservation as a \textit{stochastic process}.
+Formally, a stochastic process is a collection of random variables that take values in a set $S$, the \textit{state space}.
+The collection is indexed by another set $T$ the \textit{index set}.
+The two most common sets are the natural numbers $T = \{0, 1, 2, \ldots\}$ and the non negative real numbers $T = [0, \infty)$, which usually represent discrete time and continuous time, respectively.
+The first index set thus gives a sequence of random variables $\{X_0, X_1, X_2, \ldots \}$ and the second, a  collection of random variables $\{X(t), t \geq 0 \}$, one random variable for each time $t$.
+In general, the index set does not have to describe time and is also commenly use to describe spatial location.
+The state space can be finite, countably infinite, or uncountable, depending on the application.
+
+\subsection{Discrete-Time Markov Chains}
+\begin{boks}{Definition 8.1.}
+  Let $X_0, X_1, X_2, \ldots$ be a sequence of discrete random variables, taking values in some set $S$ and that are such that
+  \begin{align}\label{eq:markov_egenskaben}
+    P(X_{n + 1} = j | X_0 = i_0, \ldots, X_{n - 1} = i_{n - 1}, X_n = i) =
+    P(X_{n + 1} = j | X_n = i)
+  \end{align}
+  for all $i, j, i_0, \ldots, i_{n - 1}$ in $S$ and all $n$. The sequence $\{ X_n \}$ is then called a \textit{Markov chain}. Furthermore \eqref{eq:markov_egenskaben} is called the \textit{Markov property}.
+\end{boks}
+We ofthen think of the index $n$ as discrete time and say that $X_n$ is the \textit{state} of the chain at time $n$, where the state space $S$ may be finite or coutably infinte.
+
+In general, the probability $P(X_{n + 1} = j | X_n = i)$ depends in $i,j$, and $n$. It is, however, often the case that there is no dependence on $n$. We call such chains \textit{time-homogenous} and restrict our attention to these chains. Since the conditional probability in the definition thus depends only on $i$ and $j$, we use the notation
+\begin{align*}
+  p_{ij} = P(X_{n + 1} = j | X_n = i), \quad i,j \in S
+\end{align*}
+and call these the \textit{transition probabilities} of the Markov chain. Thus, if the chain is in state \textit{i}, the probabilities $p_{ij}$ desribe how the chain chooses which state to jump to necxt. Obviously, the transition probabilities have to satisfy the following two criteria:
+\begin{align*}
+  \text{(a)} \ p_{ij} \geq 0 \quad \text{for all} \ i,j \in S, \qquad
+  \text{(b)} \ \sum_{j \in S} p_{ij} = 1 \quad \text{for all} \ i \in S
+\end{align*}
+
+\subsubsection{Time Dynamics of a Markov Chain}
+The most fundamental aspect of a Markov chain in which we are interested is how it develops over time.
+The transition matrix provides us with a despriction od the stepwise behaviour, but suppose that we want to compute the distribution of the chain two steps ahead. Let
+\begin{align*}
+  p_{ij}^{(2)} = P(X_2 = j | X_0 = i)
+\end{align*}
+and condition on the intermediate step $X_1$. The law of total probability gives
+\begin{align*}
+  p_{ij}^{(2)} &= \sum_{k \in S} P(X_2 = j | X_0 = i, X_1 = k)
+  P(X_1 = k | X_0 = i) \\
+  &=\sum_{k \in S} P(X_2 = j | X_1 = k) P(X_1 = k | X_0 = i) =
+  \sum_{k \in S} p_{ik}p_{kj}
+\end{align*}
+where we used the Markov property for the second-to-last equality. We switched the order between the factors in the sum to get the intuitively appealing last expression; in order to fo from $i$ to $j$ in two steps, we need to visit intermediate step $k$ and jump from there to $j$. Now, recall how matrix multiplication works to help us realize from the expression above that $p_{ij}^{(2)}$ is the $(i, j)$th entry in the matrix $P^2$. Thus, in order to get the two-step transition probabilities, we square the transition matrix. Generally, define the \textit{n-step transition probabilities} as
+\begin{align*}
+  p_{ij}^{(n)} = P(X_n = j | X_0 = i)
+\end{align*}
+and let $P^{(n)}$ be the $n$-step transition matrix. Repeating the argument above gives $P^{(n)} = P^n$, the $n$th power of the one-step transition matrix. In particular, this gives the relation
+\begin{align*}
+  P^{(n + m)} = P^{(n)}P^{(m)}
+\end{align*}
+for all $m, n$, commonly referred to as the \textit{Chapman-Kolmogorov equations}. Spelld out coordinatewise, they become
+\begin{align*}
+  p_{ij}^{(n + m)} =  \sum_{k \in S} p_{ik}^{(n)}p_{jk}^{(m)}
+\end{align*}
+for all $m, n$ and all $i,j \in S$. In words, to go from $i$ to $j$ in $n + m$ steps, we nedd to visit some intermediate step $k$ after $n$ steps. We let $P^{(0)} = I$, the identity matrix.
+
+\subsubsection{Classification of States}
+\begin{boks}{Definition 8.2}
+  If $p_{ij}^{(n)} > 0$ for some $n$, we say that state $j$ is \textit{accesible} from state $i$, written $i \rightarrow j$. If $j \rightarrow i$, we say that $i$ and $j$ \textit{communicate} and write this $i \leftrightarrow j$.
+\end{boks}
+In general, if we fix a state $i$ in the state space of a Mrkov vhain, we can find all states that communicate with $i$ and form a \textit{communicating class} containing $i$. It is easy to realize that not only does $i$ communicate with all states in this class but they all communicate with each other. By convention, every state communicates with itself (it can reach itself in $0$ steps) so every state belongs to a class.
+If you wish to be more mathemaical, the relastion ``$\leftrightarrow$'' is an equivalence relation and thus divides the state space into equivalence classes that are precisely the communicating classes.
+\begin{boks}{Definition 8.3}
+  If all states in $S$ communicate with each other, the Markov chain is said to be \textit{irreducible}.
+\end{boks}
+\begin{boks}{Definition 8.4}
+  Consider a state $i \in S$ and the $\tau_i$ be the number of steps it takes for the chain to first visit $i$. Thus
+  \begin{align*}
+    \tau_i = \min \{ n \geq 1 \ : \ X_n = i \}
+  \end{align*}
+  where $\tau_i = \infty$ if $i$ is never visited. If $P_i(\tau_i < \infty) = 1$, the state $i$ is said to be \textit{recurrent} and if $P_i(\tau_i < \infty) < 1$, it is said to be \textit{transient}.
+\end{boks}
+\begin{boks}{Corollary 8.1}
+  In an irreducible Markov chain, either all states are trasient or all states are recurrent.
+\end{boks}
+\begin{boks}{Corollary 8.2}
+  Suppose that $S$ is finite. A state $i$ is transient if and only if there is another state $j$ such that $i \rightarrow j$ but $j \nrightarrow i$.
+\end{boks}
+\begin{boks}{Corollary 8.3}
+  If a Markov chain has finite state space, there is at least one recurrent state.
+\end{boks}
+\begin{boks}{Proposition 8.1}
+  State $i$ is
+  \begin{align*}
+    \text{transient if} \quad &\sum_{n = 1}^\infty p_{ii}^{(n)} < \infty \\
+    \text{recurrent if} \quad &\sum_{n = 1}^\infty p_{ii}^{(n)} = \infty
+  \end{align*}
+\end{boks}
+
+\subsubsection{Stationary Distribution}
+\begin{boks}{Definition 8.5}
+  Let $P$ be the transition matrix of a Markov chain with state space $S$. A probability distribution $\boldsymbol{\pi} = (\pi_1, \pi_2, \ldots)$ on $S$ satisfying
+  \begin{align*}
+    \boldsymbol{\pi} P = \boldsymbol{\pi}
+  \end{align*}
+  is called a \textit{stationary distribution} of the chain.
+\end{boks}
+\begin{boks}{Proposition 8.2}
+  Consider an irreducible Markov chain. If a stationary distribution exists, it is unique.
+\end{boks}
+\begin{boks}{Proposition 8.3}
+  If $S$ is finite and the Markov chain is irreducible, a unique stationary distribution $\boldsymbol{\pi}$ exists.
+\end{boks}
+\begin{boks}{Definition 8.6}
+  Let $i$ be a recurrent state. If $E_i[\tau_i] < \infty$, then $i$ is said to be $positive recurrent$. If $E_i[\tau_i] = \infty$, $i$ is said to be \textit{null recurrent}.
+\end{boks}
+\begin{boks}{Corollary 8.4}
+  For an irreducible Markov chain, there are three possibilities: \textbf{(a)} all states are positive recurrent, \textbf{(b)} all states are null recurrent, and \textbf{(c)} all states are transient.
+\end{boks}

@@ -64,10 +64,25 @@ for $k = 1, 2, \ldots, n$. Then the $I_k$ are i.i.d. and we know from Section 2.
   Let $X_1, X_2, \ldots$ be a sequence of discrete random variables such that $X_n$ has pmf $p_{X_n}$. If $X$ is a discrete random variable with pmf $p_X$ and
   \begin{align*}
     p_{X_n}(x) \rightarrow p_{X}(x) \quad
-    \text{as} \quad n \rightarrow \infty \text{for all} x
+    \text{as} \quad n \rightarrow \infty \quad \text{for all} \quad x
   \end{align*}
   then we say that $X_n$ \textit{converges in distribution} to $X$, written $X_n \xrightarrow{d} X$.
 \end{boks}
 \begin{boks}{Proposition 4.2}
   Let $X_1, X_2, \ldots$ be a sequence of random variables such that $X_n \sim bin(n, p_n)$, where $np_n \rightarrow \lambda > 0$ as $n \rightarrow \infty$, ans let $X \sim \poi(\lambda)$. Then $X_n \xrightarrow{d} X$.
 \end{boks}
+
+\subsection{Continuous Limits}
+Let us next consider the case when the limiting random variable is continuous. As we already know from the de Moivre-Laplace theorem, the limit can be continuous even if the random variables themselves are not.
+\begin{boks}{Definition 4.2}
+  Let $X_1, X_2, \ldots$ be a sequence of random variables such that $X_n$ has cdf $F_n$. If $X$ is a continuous random variable with cdf $F$ random
+  \begin{align*}
+    F_n(x) \rightarrow F(x)
+    \quad \text{as} \quad
+    n \rightarrow \infty
+    \quad \text{for all} \quad
+    x \in \mathbb{R}
+  \end{align*}
+we say that $X_n$ \textit{converges in distribution} to $X$, written $X_n \xrightarrow{d} X$.
+\end{boks}
+The most important result of this type is the central limit theorem. Another class of important results regarding convergence in distribution deals with the so-called \textit{extreme values}, for example, the minimum and maximum in a sequence of random variables.
