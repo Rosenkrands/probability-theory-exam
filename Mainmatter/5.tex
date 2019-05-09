@@ -171,4 +171,41 @@ We also call $\rho(X, Y)$ simply the correlation between $X$ and $Y$. Here are s
   which gives $\rho\geq1$. To show that $\rho\leq1$, instead use $X/\sigma_1$ and $-Y/\sigma_2$. Part (b) follows from Corollary 3.8, and parts (c) and (d) follows from Proposition 2.16, applied to tha random variables $X/\sigma_1 - Y/\sigma_2$ and $X/\sigma_1 + Y/\sigma_2$, respectively. Note that this also gives $a$ and $b$ expressed in terms of the means, variances, and correlation coefficeinet (see problem 90).
 \end{proof}
 
-\textbf{Her mangler der bivariate normal!}
+\subsection{The Bivariate Normal Distribution}
+\begin{boks}{Definition 3.18}
+  If $(X, Y)$ has joint pdf
+  \begin{align*}
+    &f(x,y) = \frac{1}{2\pi\sigma_1\sigma_2\sqrt{1 - \rho^2}}\\
+    &\times \exp \left\{ -\frac{1}{2(1-\rho^2)} \bigg( \frac{(x-\mu_1)^2}{\sigma_1^2} + \frac{(y-\mu_2)^2}{\sigma_2^2} -
+    \frac{2\rho (x-\mu_1)(y-\mu_2)}{\sigma_1\sigma_2} \bigg) \right\}
+  \end{align*}
+  for $x,y \in \mathbb{R}$, then $(X,Y)$ is said to have a \textit{bivariate normal distribution}.
+\end{boks}
+\begin{boks}{Proposition 3.27}
+  Let $(X,Y)$ have a bivariate normal distribution with parameters $\mu_1, \mu_2, \sigma_1, \sigma_2, \rho$. Then
+  \begin{enumerate}
+    \item $X \sim N(\mu_1, \sigma_1^2)$ and $Y \sim N(\mu_2, \sigma_2^2)$
+    \item $\rho$ is the correlation coefficient of $X$ and $Y$
+  \end{enumerate}
+\end{boks}
+\begin{proof}
+  \textbf{mangler}
+\end{proof}
+\begin{boks}{Proposition 3.28}
+  Let $(X, Y)$ be bivariate normal. Then, for fixed $x \in \mathbb{R}$
+  \begin{align*}
+    Y|X = x \sim N \left( \mu_2 + \rho\frac{\sigma_2}{\sigma_1}(x - \mu_1)
+    , \sigma_2^2(1 - \rho^2) \right)
+  \end{align*}
+\end{boks}
+\begin{proof}
+  \textbf{mangler}
+\end{proof}
+\begin{boks}{Proposition 3.29}
+  Let $(X,Y)$ be bivariate normal. Then $X$ and $Y$ are independent if and only if they are uncorrelated.
+\end{boks}
+\begin{proof}
+  \textbf{mangler}
+\end{proof}
+
+Der mangler stadig en masse her... Men der må være en grænse!
