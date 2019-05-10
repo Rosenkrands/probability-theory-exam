@@ -1,4 +1,26 @@
 % !TEX root = ../main.tex
+\subsection{Axioms of Probability}
+\begin{boks}{Definition 1.3 (Axioms of Probability)}
+  A \textit{probability measure} is a function $P$, which assigns to each event $A$ a number of $P(A)$ satisfying
+  \begin{enumerate}[label = \textbf{(\alph*)}]
+    \item $0 \leq P(A) \leq 1$
+    \item P(S) = 1
+    \item If $A_1, A_2, \ldots$ is a sequence of \textit{pairwise disjoint} events, that is, if $i \neq j$, then $A_i \cap A_j = \emptyset$, then
+    \begin{align*}
+      P\left( \bigcup_{k = 1}^\infty A_k \right) = \sum_{k = 1}^\infty P(A_k)
+    \end{align*}
+  \end{enumerate}
+\end{boks}
+\subsection{Conditional Probability}
+\begin{boks}{Definition 1.4}
+  Let $B$ be an event such that $P(B) > 0$. For any event $A$, denote and define the \textit{conditional probability} of $A$ \textit{given} $B$ as
+  \begin{align*}
+    P(A|B) &= \frac{P(A \cap B)}{P(B)}, \quad \text{or}\\
+    P(A|B)P(B) &= P(A \cap B)
+  \end{align*}
+\end{boks}
+
+\subsection{Law of Total Probability}
 \begin{boks}{Theorem 1.1 (Law of Total Probability)}
     Let $B_1, B_2, \ldots$ be a sequence of events such that
     \begin{enumerate}
@@ -19,7 +41,7 @@ First note that
 \end{align*}
 by the distributive law for infinite unions. Since $A \cap B_1, A \cap B_2, \ldots$ are pairwise disjoint,  we get
 \begin{align*}
-    P(A) = P(A \cap B_k) = \sum_{k = 1}^\infty P(A|B_k)P(B_k).
+    P(A) = P \left(\bigcup_{k = 1}^\infty (A \cap B_k)\right) = \sum_{k = 1}^\infty P(A \cap B_k) = \sum_{k = 1}^\infty P(A|B_k)P(B_k).
 \end{align*}
 Which proves the theorem. Note that the result also holds for finite sequences.
 \end{proof}
@@ -31,10 +53,29 @@ If $0 < P(B) < 1$, for $B\subseteq S$, then
 \end{align*}
 \end{boks}
 
+\subsection{Bayes Formula}
 \begin{boks}{Proposition 1.11 (Bayes' Formula)}
 Under the same assumptions as in the law of total probability and if $P(A) > 0$, then for any event $B_j$, we have
 \begin{align*}
     P(B_j|A) &= \frac{P(A|B_j)P(B_j)}{\sum_{k=1}^\infty P(A|B_k)P(B_k)} \\
     &= \frac{P(A|B_j)P(B_j)}{P(A)} \qquad \text{according to the LTP.}
 \end{align*}
+\end{boks}
+\begin{proof}
+  Note that, by the law of total probability, the denominator is nothing but $P(A)$, and hence we must show that
+  \begin{align*}
+    P(B_j|A) = \frac{P(A|B_j)P(B_j)}{P(A)}
+  \end{align*}
+  which is to say that
+  \begin{align*}
+    P(B_j|A)P(A) = P(A|B_j)P(B_j)
+  \end{align*}
+  which is true since both sides equal $P(A \cap B_j)$, by the definition of conditional probability.
+\end{proof}
+
+\begin{boks}{Corollary 1.7}
+  If $0 < P(B) < 1$ and $P(A) > 0$, then
+  \begin{align*}
+    P(B|A) = \frac{P(A|B)P(B)}{P(A|B)P(B) + P(A|B^c)P(B^c)}
+  \end{align*}
 \end{boks}
