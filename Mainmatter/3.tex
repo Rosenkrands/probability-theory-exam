@@ -123,14 +123,14 @@ Let $X$ be a random variable with expected value $\mu$. The \textit{variance} of
 \end{boks}
 
 \begin{proof}
-By proposition 2.12, we have
+By proposition 2.12, $E[g(X)] = \int_{-\infty}^\infty g(x)f_X(x)dx$, we have
 \begin{align*}
-    Var[X] &= E\Big[(X-\mu)^2\Big] = \int_{-\infty}^\infty (x - \mu)^2 dx\\
+    Var[X] &= E\Big[(X-\mu)^2\Big] = \int_{-\infty}^\infty (x - \mu)^2f(x) dx\\
     &= \int_{-\infty}^\infty (x^2 - 2x\mu + \mu^2) f(x) dx \\
     &= \int_{-\infty}^\infty x^2 f(x) dx - 2\mu \int_{-\infty}^\infty x f(x) dx + \mu^2\int_{-\infty}^\infty f(x)dx\\
     &=E[X^2] - 2\mu E[X] + \mu^2\\
-    &= E[X^2] - 2 E[X]^2 + E[X]^2\\
-    &= E[X^2] - E[X]^2.
+    &= E[X^2] - 2 E[X]^2 + (E[X])^2\\
+    &= E[X^2] - (E[X])^2.
 \end{align*}
 \end{proof}
 
