@@ -1,8 +1,10 @@
 % !TEX root = ../main.tex
+\subsection{Two Dimensional Random Vector}
 \begin{boks}{Definition 3.1}
 Let $X$ and $Y$ be random variables. The pair $(X,Y)$ is then called a (two-dimensional) \textit{random vector.}
 \end{boks}
 
+\subsection{Joint Cumulative Distribution Function}
 \begin{boks}{Definition 3.2}
 The \textit{joint distribution function} (joint cdf) of $(X,Y)$ is defined as
 \begin{align*}
@@ -19,16 +21,17 @@ If $(X, Y)$ has joint cdf $F$, then $X$ and $Y$ have cdfs
 for $x,y \in \mathbb{R}$. Notice that there is a slight abuse of notation here, $F(x,\infty)$ refers to $\lim_{y \rightarrow \infty} F(x, y)$.
 \end{boks}
 
+\subsection{Joint Probability Density Function}
 \begin{boks}{Definition 3.5}
 If there exists a function $f$ such that
 \begin{align*}
     P((X, Y)\in B) = \int\int_B f(x, y) dx dy
 \end{align*}
-for all subsets $B\subseteq \mathbb{R}^2$, then $X$ adn $Y$ are said to be \textit{jointly continuous}. The function $f$ is calle the \textit{joint pdf}.
+for all subsets $B\subseteq \mathbb{R}^2$, then $X$ adn $Y$ are said to be \textit{jointly continuous}. The function $f$ is called the \textit{joint pdf}.
 \end{boks}
 
 \begin{boks}{Propostion 3.3}
-If $X$ and $Y$ are jointly continuous with joint cdf $F$ adn joint pdf $f$, then
+If $X$ and $Y$ are jointly continuous with joint cdf $F$ and joint pdf $f$, then
 \begin{align*}
     f(x, y) = \frac{\partial^2}{\partial x \partial y} F(x,y), \quad x,y \in \mathbb{R}.
 \end{align*}
@@ -41,6 +44,8 @@ A function $f$ is a possible joint pdf for the random variables $X$ and $Y$ if a
     \item $\int_{-\infty}^\infty \int_{-\infty}^\infty f(x,y)dx\  dy = 1$
 \end{enumerate}
 \end{boks}
+\newpage
+\subsection{Marginal Probability Density Function}
 
 \begin{boks}{Proposition 3.5}
 Suppose that $X$ and $Y$ are jointly continuous with joint pdf $f$. Then $X$ adn $Y$ are continuous random variables with marginal pdfs
@@ -56,7 +61,8 @@ Let $(X, Y)$ ne jointly continuous with joint pdf $f$. The \textit{conditional p
     f_Y(y|x) = \frac{f(x,y)}{f_X(x)}, \quad y\in\mathbb{R}.
 \end{align*}
 \end{boks}
-
+\vspace{-5mm}
+\subsection{Law of Total Probability}
 The following proposition is a continuous version of the law of total probability.
 
 \begin{boks}{Proposition 3.6}
@@ -91,14 +97,14 @@ Suppose that $X$ and $Y$ are jointly continuous with joint pdf $f$. Then $X$ and
 for all $x,y \in \mathbb{R}$.
 \end{boks}
 
-\begin{boks}{Corrollary 3.1}
-\textit{The random variables $X$ and $Y$ are independent if and only if ``the joint is the product of the marginals.''}
-\end{boks}
-
-\subsection{Convolution}
-\begin{boks}{Proposition 3.34}
-Let $X$ and $Y$ be independent continuous random variables with pdfs $f_X$ and $f_Y$, respectively. The pdf of the sum $X + Y$ is then
-\begin{align*}
-    f_{X+Y} = \int_{-\infty}^\infty f_Y(x - u)f_X(u)du, \quad x\in \mathbb{R}.
-\end{align*}
-\end{boks}
+% \begin{boks}{Corrollary 3.1}
+% \textit{The random variables $X$ and $Y$ are independent if and only if ``the joint is the product of the marginals.''}
+% \end{boks}
+%
+% \subsection{Convolution}
+% \begin{boks}{Proposition 3.34}
+% Let $X$ and $Y$ be independent continuous random variables with pdfs $f_X$ and $f_Y$, respectively. The pdf of the sum $X + Y$ is then
+% \begin{align*}
+%     f_{X+Y} = \int_{-\infty}^\infty f_Y(x - u)f_X(u)du, \quad x\in \mathbb{R}.
+% \end{align*}
+% \end{boks}
