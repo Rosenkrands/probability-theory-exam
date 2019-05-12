@@ -1,14 +1,14 @@
 % !TEX root = ../main.tex
-Many real-world applications of probability theory have one particular feature that data are collected sequentially in time.
-A few examples are weather data, stock market indices, air-pollution data, demographic data, and political tracking polls.
-These also have antoher feature in common that successive observations are typically not independent.
-We refer to any such collection of abservation as a \textit{stochastic process}.
-Formally, a stochastic process is a collection of random variables that take values in a set $S$, the \textit{state space}.
-The collection is indexed by another set $T$ the \textit{index set}.
-The two most common sets are the natural numbers $T = \{0, 1, 2, \ldots\}$ and the non negative real numbers $T = [0, \infty)$, which usually represent discrete time and continuous time, respectively.
-The first index set thus gives a sequence of random variables $\{X_0, X_1, X_2, \ldots \}$ and the second, a  collection of random variables $\{X(t), t \geq 0 \}$, one random variable for each time $t$.
-In general, the index set does not have to describe time and is also commenly use to describe spatial location.
-The state space can be finite, countably infinite, or uncountable, depending on the application.
+% Many real-world applications of probability theory have one particular feature that data are collected sequentially in time.
+% A few examples are weather data, stock market indices, air-pollution data, demographic data, and political tracking polls.
+% These also have antoher feature in common that successive observations are typically not independent.
+% We refer to any such collection of abservation as a \textit{stochastic process}.
+% Formally, a stochastic process is a collection of random variables that take values in a set $S$, the \textit{state space}.
+% The collection is indexed by another set $T$ the \textit{index set}.
+% The two most common sets are the natural numbers $T = \{0, 1, 2, \ldots\}$ and the non negative real numbers $T = [0, \infty)$, which usually represent discrete time and continuous time, respectively.
+% The first index set thus gives a sequence of random variables $\{X_0, X_1, X_2, \ldots \}$ and the second, a  collection of random variables $\{X(t), t \geq 0 \}$, one random variable for each time $t$.
+% In general, the index set does not have to describe time and is also commenly use to describe spatial location.
+% The state space can be finite, countably infinite, or uncountable, depending on the application.
 
 \subsection{Discrete-Time Markov Chains}
 \begin{boks}{Definition 8.1.}
@@ -31,32 +31,32 @@ and call these the \textit{transition probabilities} of the Markov chain. Thus, 
   \text{(b)} \ \sum_{j \in S} p_{ij} = 1 \quad \text{for all} \ i \in S
 \end{align*}
 
-\subsubsection{Time Dynamics of a Markov Chain}
-The most fundamental aspect of a Markov chain in which we are interested is how it develops over time.
-The transition matrix provides us with a despriction od the stepwise behaviour, but suppose that we want to compute the distribution of the chain two steps ahead. Let
-\begin{align*}
-  p_{ij}^{(2)} = P(X_2 = j | X_0 = i)
-\end{align*}
-and condition on the intermediate step $X_1$. The law of total probability gives
-\begin{align*}
-  p_{ij}^{(2)} &= \sum_{k \in S} P(X_2 = j | X_0 = i, X_1 = k)
-  P(X_1 = k | X_0 = i) \\
-  &=\sum_{k \in S} P(X_2 = j | X_1 = k) P(X_1 = k | X_0 = i) =
-  \sum_{k \in S} p_{ik}p_{kj}
-\end{align*}
-where we used the Markov property for the second-to-last equality. We switched the order between the factors in the sum to get the intuitively appealing last expression; in order to fo from $i$ to $j$ in two steps, we need to visit intermediate step $k$ and jump from there to $j$. Now, recall how matrix multiplication works to help us realize from the expression above that $p_{ij}^{(2)}$ is the $(i, j)$th entry in the matrix $P^2$. Thus, in order to get the two-step transition probabilities, we square the transition matrix. Generally, define the \textit{n-step transition probabilities} as
-\begin{align*}
-  p_{ij}^{(n)} = P(X_n = j | X_0 = i)
-\end{align*}
-and let $P^{(n)}$ be the $n$-step transition matrix. Repeating the argument above gives $P^{(n)} = P^n$, the $n$th power of the one-step transition matrix. In particular, this gives the relation
-\begin{align*}
-  P^{(n + m)} = P^{(n)}P^{(m)}
-\end{align*}
-for all $m, n$, commonly referred to as the \textit{Chapman-Kolmogorov equations}. Spelld out coordinatewise, they become
-\begin{align*}
-  p_{ij}^{(n + m)} =  \sum_{k \in S} p_{ik}^{(n)}p_{jk}^{(m)}
-\end{align*}
-for all $m, n$ and all $i,j \in S$. In words, to go from $i$ to $j$ in $n + m$ steps, we nedd to visit some intermediate step $k$ after $n$ steps. We let $P^{(0)} = I$, the identity matrix.
+% \subsubsection{Time Dynamics of a Markov Chain}
+% The most fundamental aspect of a Markov chain in which we are interested is how it develops over time.
+% The transition matrix provides us with a despriction od the stepwise behaviour, but suppose that we want to compute the distribution of the chain two steps ahead. Let
+% \begin{align*}
+%   p_{ij}^{(2)} = P(X_2 = j | X_0 = i)
+% \end{align*}
+% and condition on the intermediate step $X_1$. The law of total probability gives
+% \begin{align*}
+%   p_{ij}^{(2)} &= \sum_{k \in S} P(X_2 = j | X_0 = i, X_1 = k)
+%   P(X_1 = k | X_0 = i) \\
+%   &=\sum_{k \in S} P(X_2 = j | X_1 = k) P(X_1 = k | X_0 = i) =
+%   \sum_{k \in S} p_{ik}p_{kj}
+% \end{align*}
+% where we used the Markov property for the second-to-last equality. We switched the order between the factors in the sum to get the intuitively appealing last expression; in order to fo from $i$ to $j$ in two steps, we need to visit intermediate step $k$ and jump from there to $j$. Now, recall how matrix multiplication works to help us realize from the expression above that $p_{ij}^{(2)}$ is the $(i, j)$th entry in the matrix $P^2$. Thus, in order to get the two-step transition probabilities, we square the transition matrix. Generally, define the \textit{n-step transition probabilities} as
+% \begin{align*}
+%   p_{ij}^{(n)} = P(X_n = j | X_0 = i)
+% \end{align*}
+% and let $P^{(n)}$ be the $n$-step transition matrix. Repeating the argument above gives $P^{(n)} = P^n$, the $n$th power of the one-step transition matrix. In particular, this gives the relation
+% \begin{align*}
+%   P^{(n + m)} = P^{(n)}P^{(m)}
+% \end{align*}
+% for all $m, n$, commonly referred to as the \textit{Chapman-Kolmogorov equations}. Spelld out coordinatewise, they become
+% \begin{align*}
+%   p_{ij}^{(n + m)} =  \sum_{k \in S} p_{ik}^{(n)}p_{jk}^{(m)}
+% \end{align*}
+% for all $m, n$ and all $i,j \in S$. In words, to go from $i$ to $j$ in $n + m$ steps, we nedd to visit some intermediate step $k$ after $n$ steps. We let $P^{(0)} = I$, the identity matrix.
 
 \subsubsection{Classification of States}
 \begin{boks}{Definition 8.2}
@@ -74,15 +74,15 @@ If you wish to be more mathemaical, the relastion ``$\leftrightarrow$'' is an eq
   \end{align*}
   where $\tau_i = \infty$ if $i$ is never visited. If $P_i(\tau_i < \infty) = 1$, the state $i$ is said to be \textit{recurrent} and if $P_i(\tau_i < \infty) < 1$, it is said to be \textit{transient}.
 \end{boks}
-\begin{boks}{Corollary 8.1}
-  In an irreducible Markov chain, either all states are trasient or all states are recurrent.
-\end{boks}
-\begin{boks}{Corollary 8.2}
-  Suppose that $S$ is finite. A state $i$ is transient if and only if there is another state $j$ such that $i \rightarrow j$ but $j \nrightarrow i$.
-\end{boks}
-\begin{boks}{Corollary 8.3}
-  If a Markov chain has finite state space, there is at least one recurrent state.
-\end{boks}
+% \begin{boks}{Corollary 8.1}
+%   In an irreducible Markov chain, either all states are trasient or all states are recurrent.
+% \end{boks}
+% \begin{boks}{Corollary 8.2}
+%   Suppose that $S$ is finite. A state $i$ is transient if and only if there is another state $j$ such that $i \rightarrow j$ but $j \nrightarrow i$.
+% \end{boks}
+% \begin{boks}{Corollary 8.3}
+%   If a Markov chain has finite state space, there is at least one recurrent state.
+% \end{boks}
 \begin{boks}{Proposition 8.1}
   State $i$ is
   \begin{align*}
@@ -106,28 +106,28 @@ If you wish to be more mathemaical, the relastion ``$\leftrightarrow$'' is an eq
   If $S$ is finite and the Markov chain is irreducible, a unique stationary distribution $\boldsymbol{\pi}$ exists.
 \end{boks}
 \begin{boks}{Definition 8.6}
-  Let $i$ be a recurrent state. If $E_i[\tau_i] < \infty$, then $i$ is said to be $positive recurrent$. If $E_i[\tau_i] = \infty$, $i$ is said to be \textit{null recurrent}.
+  Let $i$ be a recurrent state. If $E_i[\tau_i] < \infty$, then $i$ is said to be \textit{positive recurrent}. If $E_i[\tau_i] = \infty$, $i$ is said to be \textit{null recurrent}.
 \end{boks}
 \begin{boks}{Corollary 8.4}
   For an irreducible Markov chain, there are three possibilities: \textbf{(a)} all states are positive recurrent, \textbf{(b)} all states are null recurrent, and \textbf{(c)} all states are transient.
 \end{boks}
-\begin{boks}{Proposition 8.4}
-  Consider an irreducible Markov chain $\{ X_n \}$. Then,
-  \begin{align*}
-    \text{A stationary distribution} \ \boldsymbol{\pi} \ \text{exists} \Leftrightarrow \{ X_n \} \ \text{is positive recurrent}
-  \end{align*}
-  If this is the case, $\boldsymbol{\pi}$ is unique and has $\pi_j > 0$ for all $j \in S$.
-\end{boks}
+% \begin{boks}{Proposition 8.4}
+%   Consider an irreducible Markov chain $\{ X_n \}$. Then,
+%   \begin{align*}
+%     \text{A stationary distribution} \ \boldsymbol{\pi} \ \text{exists} \Leftrightarrow \{ X_n \} \ \text{is positive recurrent}
+%   \end{align*}
+%   If this is the case, $\boldsymbol{\pi}$ is unique and has $\pi_j > 0$ for all $j \in S$.
+% \end{boks}
 
 \subsubsection{Convergence to the Stationary Distribution}
-\begin{boks}{Definition 8.7}
-  Let $p_{ij}^{(n)}$ be the $n$-step transition probabilities of a Markov chain.
-  If there exists a probability distribution \textbf{q} on $S$ such that
-  \begin{align*}
-    p_{ij}^{(n)} \rightarrow q_j \quad \text{as} \quad n \rightarrow \infty \quad \text{for all} i,j \in S
-  \end{align*}
-  we call \textbf{q} the \textit{limit distribution} of the Markov chain.
-\end{boks}
+% \begin{boks}{Definition 8.7}
+%   Let $p_{ij}^{(n)}$ be the $n$-step transition probabilities of a Markov chain.
+%   If there exists a probability distribution \textbf{q} on $S$ such that
+%   \begin{align*}
+%     p_{ij}^{(n)} \rightarrow q_j \quad \text{as} \quad n \rightarrow \infty \quad \text{for all} i,j \in S
+%   \end{align*}
+%   we call \textbf{q} the \textit{limit distribution} of the Markov chain.
+% \end{boks}
 \begin{boks}{Definition 8.8}
   The \textit{period} of state $i$ is defined as
   \begin{align*}
@@ -143,11 +143,11 @@ If you wish to be more mathemaical, the relastion ``$\leftrightarrow$'' is an eq
   for all $i,j \in S$.
 \end{boks}
 An irreducible, positve recurrent, and aperiodic Markov chain is called \textit{ergodic}.
-\begin{boks}{Proposition 8.5}
-  Consider an ergodic Markov chain with stationary distrbution $\boldsymbol{\pi}$ and choose two states $i$ and $j$. Let $\tau_i$ be the return tome to state $i$, and let $N_j$ be the number of visits to $j$ between consecutive visits to $i$. Then
-  \begin{align*}
-    E_i[\tau_i] = \frac{1}{\pi_i} \quad \text{and} \quad
-    E_i[N_j] = \frac{\pi_j}{\pi_i}
-  \end{align*}
-\end{boks}
-Note that by positive recurrence, all the $E_i[\tau_i]$ are finite and hence all the $\pi_i$ are strictly positive. The $E_i[\tau_i]$ are called the \textit{mean recurrence times}. 
+% \begin{boks}{Proposition 8.5}
+%   Consider an ergodic Markov chain with stationary distrbution $\boldsymbol{\pi}$ and choose two states $i$ and $j$. Let $\tau_i$ be the return tome to state $i$, and let $N_j$ be the number of visits to $j$ between consecutive visits to $i$. Then
+%   \begin{align*}
+%     E_i[\tau_i] = \frac{1}{\pi_i} \quad \text{and} \quad
+%     E_i[N_j] = \frac{\pi_j}{\pi_i}
+%   \end{align*}
+% \end{boks}
+% Note that by positive recurrence, all the $E_i[\tau_i]$ are finite and hence all the $\pi_i$ are strictly positive. The $E_i[\tau_i]$ are called the \textit{mean recurrence times}.
