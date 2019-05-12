@@ -12,8 +12,9 @@ and
   Var[\bar{X}] = Var \left[\frac{1}{n} \sum_{k = 1}^{n} X_k\right] = \sum_{k = 1}^{n} \frac{1}{n^2} Var[X_k] = \frac{\sigma^2}{n}
 \end{align*}
 that is, $\bar{X}$ has the same expected value as each individual $X_k$ and a variance that becomes smaller the larger the value of $n$.
-
+\vspace{-5mm}
 \subsection{The Law of Large Numbers}
+
 ALthough we can nevet guarantee that $|\bar{X} - \mu|$ is smaller than a given $\varepsilon$ we can say that is very likely that $|\bar{X} - \mu|$ is small if $n$ is large. That is the idea behind the following result.
 \begin{boks}{Theorem 4.1. (The Law of Large Numbers)}
   Let $X_1, X_2, \ldots$ be a sequence of i.i.d. random variables with mean $\mu$, and let $\bar{X}$ be their sample mean. Then, for every $\varepsilon > 0$
@@ -42,6 +43,7 @@ We say that $\bar{X}$ \textit{converges in probability} to $\mu$ and write
     f_n \xrightarrow{P} p \quad \text{as} \quad n \rightarrow \infty
   \end{align*}
 \end{boks}
+\vspace{-5mm}
 \begin{proof}
   Define the indicators
   \begin{align*}
@@ -53,6 +55,7 @@ We say that $\bar{X}$ \textit{converges in probability} to $\mu$ and write
   \end{align*}
 for $k = 1, 2, \ldots, n$. Then the $I_k$ are i.i.d. and we know from Section 2.5.1 that they have mean $\mu = p$. Since $f_n$ is the sample mean of the $I_k$, the law of large numbers gives $f_n \xrightarrow{P} p$ as $n \rightarrow \infty$.
 \end{proof}
+\vspace{-4mm}
 \begin{boks}{Theorem 4.2 (The Central Limit Theorem)}
   Let $X_1, X_2, \ldots$ be i.i.d. random variables with mean $\mu$ and variance $\sigma^2 < \infty$ and let $S_n = \sum_{k = 1}^{n} X_k$. Then, for each $x \in \mathbb{R}$, we have
   \begin{align*}
@@ -60,29 +63,54 @@ for $k = 1, 2, \ldots, n$. Then the $I_k$ are i.i.d. and we know from Section 2.
   \end{align*}
   as $n \rightarrow \infty$, where $\Phi$ is the cdf of the standard normal distribution.
 \end{boks}
-\begin{boks}{Definition 4.1}
-  Let $X_1, X_2, \ldots$ be a sequence of discrete random variables such that $X_n$ has pmf $p_{X_n}$. If $X$ is a discrete random variable with pmf $p_X$ and
+\vspace{-5mm}
+\begin{boks}{Example 4.5}
+  Consider again bufons needle problem. Recall that the probability that the randomly tossed needle intersects a line is $2/\pi$ and how we argued in the previous section that $2/f_n \xrightarrow{P} \pi$ as $ n \rightarrow \infty$. Let $\hat{\pi}$ denote our estimate of $\pi$ after $n$ tosses:
   \begin{align*}
-    p_{X_n}(x) \rightarrow p_{X}(x) \quad
-    \text{as} \quad n \rightarrow \infty \quad \text{for all} \quad x
+    \hat{\pi} = \frac{2}{f_n}
   \end{align*}
-  then we say that $X_n$ \textit{converges in distribution} to $X$, written $X_n \xrightarrow{d} X$.
-\end{boks}
-\begin{boks}{Proposition 4.2}
-  Let $X_1, X_2, \ldots$ be a sequence of random variables such that $X_n \sim bin(n, p_n)$, where $np_n \rightarrow \lambda > 0$ as $n \rightarrow \infty$, ans let $X \sim \poi(\lambda)$. Then $X_n \xrightarrow{d} X$.
-\end{boks}
+  As mentioned previously, Buffon himself actually that this experiment be used to estimate $\pi$. Let us say that on some occasion he tossed the needle $1000$ times. What is the probability that he got the estimate correct to two decimals?
 
-\subsection{Continuous Limits}
-Let us next consider the case when the limiting random variable is continuous. As we already know from the de Moivre-Laplace theorem, the limit can be continuous even if the random variables themselves are not.
-\begin{boks}{Definition 4.2}
-  Let $X_1, X_2, \ldots$ be a sequence of random variables such that $X_n$ has cdf $F_n$. If $X$ is a continuous random variable with cdf $F$ random
+  We wish to find
   \begin{align*}
-    F_n(x) \rightarrow F(x)
-    \quad \text{as} \quad
-    n \rightarrow \infty
-    \quad \text{for all} \quad
-    x \in \mathbb{R}
+    P(|\hat{\pi} - 3.14| \leq 0.005) = P\left( \frac{2}{3.145} \leq f_n \leq \frac{2}{3.135} \right)
   \end{align*}
-we say that $X_n$ \textit{converges in distribution} to $X$, written $X_n \xrightarrow{d} X$.
+  where, by the following equation with $p=2/\pi$
+  \begin{align*}
+    f_n \stackrel{d}{\approx} N\left( p, \frac{p(1 - p)}{n} \right) \qquad
+    f_n \stackrel{d}{\approx} N\left( \frac{2}{\pi}, \frac{2(\pi - 2)}{n\pi^2} \right)
+  \end{align*}
+  With $n = 1000$ we now get
+  \begin{align*}
+    P(|\hat{\pi} - 3.14| \leq 0.005) &= P \left( \frac{2}{3.145} \leq f_{1000} \leq \frac{2}{3.135} \right)\\
+    &=\Phi \left( \frac{2/3.135 - 2/\pi}{\sqrt{2(\pi - 2)/1000\pi^2}} \right) - \Phi\left( \frac{2/3.145 - 2/\pi}{\sqrt{2(\pi - 2)/1000\pi^2}} \right)\\
+    &= \Phi(0.09) - \Phi(-0.05) \approx 0.06
+  \end{align*}
+  i.e. the probability of being correct within two decimals after $1000$ throws is 6 percent. That is no a very good reward for all that needle tossing.
 \end{boks}
-The most important result of this type is the central limit theorem. Another class of important results regarding convergence in distribution deals with the so-called \textit{extreme values}, for example, the minimum and maximum in a sequence of random variables.
+% \begin{boks}{Definition 4.1}
+%   Let $X_1, X_2, \ldots$ be a sequence of discrete random variables such that $X_n$ has pmf $p_{X_n}$. If $X$ is a discrete random variable with pmf $p_X$ and
+%   \begin{align*}
+%     p_{X_n}(x) \rightarrow p_{X}(x) \quad
+%     \text{as} \quad n \rightarrow \infty \quad \text{for all} \quad x
+%   \end{align*}
+%   then we say that $X_n$ \textit{converges in distribution} to $X$, written $X_n \xrightarrow{d} X$.
+% \end{boks}
+% \begin{boks}{Proposition 4.2}
+%   Let $X_1, X_2, \ldots$ be a sequence of random variables such that $X_n \sim bin(n, p_n)$, where $np_n \rightarrow \lambda > 0$ as $n \rightarrow \infty$, ans let $X \sim \poi(\lambda)$. Then $X_n \xrightarrow{d} X$.
+% \end{boks}
+
+% \subsection{Continuous Limits}
+% Let us next consider the case when the limiting random variable is continuous. As we already know from the de Moivre-Laplace theorem, the limit can be continuous even if the random variables themselves are not.
+% \begin{boks}{Definition 4.2}
+%   Let $X_1, X_2, \ldots$ be a sequence of random variables such that $X_n$ has cdf $F_n$. If $X$ is a continuous random variable with cdf $F$ and
+%   \begin{align*}
+%     F_n(x) \rightarrow F(x)
+%     \quad \text{as} \quad
+%     n \rightarrow \infty
+%     \quad \text{for all} \quad
+%     x \in \mathbb{R}
+%   \end{align*}
+% we say that $X_n$ \textit{converges in distribution} to $X$, written $X_n \xrightarrow{d} X$.
+% \end{boks}
+% The most important result of this type is the central limit theorem. Another class of important results regarding convergence in distribution deals with the so-called \textit{extreme values}, for example, the minimum and maximum in a sequence of random variables.
