@@ -11,6 +11,25 @@
   \end{align*}
   where the last equality follows since $F_U(u) = u$ if $0 \leq u \leq 1$. The argument here is $u = F(x)$, which is between $0$ and $1$ since $F$ is a cdf.
 \end{proof}
+
+\begin{boks}{Example 5.2}
+  Generate an observation from an exponential distribution with parameter $\lambda$.
+
+  Here,
+  \begin{align*}
+    F(x) = 1- e^{-\lambda x}, \quad x \geq 0
+  \end{align*}
+  To find the inverse, as usual solve $F(x) = u$, to obtain
+  \begin{align*}
+    x = F^{-1}(u) = -\frac{1}{\lambda} \log(1 - u), \quad 0 \leq u < 1
+  \end{align*}
+  Hence if $U \sim \unif[0,1]$, the random variable
+  \begin{align*}
+  X = -\frac{1}{\lambda} \log(1 - U)
+  \end{align*}
+  is exp($\lambda$). We can note here that since $1 - U$ is also uniform on $[0,1]$, we might as well take $X = - \log U/\lambda$.
+\end{boks}
+
 \begin{boks}{Proposition 5.3 (The Rejection Method)}
   \begin{enumerate}[label = \arabic*.]
     \item Generate $Y$ and $U \sim \unif[0,1]$ independent of each other.
