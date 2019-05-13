@@ -1,0 +1,38 @@
+\BOOKMARK [1][-]{section.1}{Basics of probability \(incl. combinatorics, law of total probability and Bayes' formula\).}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Axioms of Probability}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Conditional Probability}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Law of Total Probability}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Bayes Formula}{section.1}% 5
+\BOOKMARK [1][-]{section.2}{Discrete stochastic variables and distributions \(incl. means and variances\).}{}% 6
+\BOOKMARK [2][-]{subsection.2.1}{Discrete Random Variable}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.2}{Probability Mass Function}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.3}{Cumulative Distribution Function}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.4}{Expected Value}{section.2}% 10
+\BOOKMARK [1][-]{section.3}{Continuous stochastic variables and distributions \(incl. means and variances\).}{}% 11
+\BOOKMARK [2][-]{subsection.3.1}{Continuous Stochastic Variable}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.2}{Cumulative Distribution Function}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.3}{Probability Density Function}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.4}{Proposition 2.8}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.5}{Expected Value}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.6}{Variance}{section.3}% 17
+\BOOKMARK [1][-]{section.4}{Two random variables: select from topics such as joint distribution, conditional distribution, independence and convolution.}{}% 18
+\BOOKMARK [2][-]{subsection.4.1}{Two Dimensional Random Vector}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.2}{Joint Cumulative Distribution Function}{section.4}% 20
+\BOOKMARK [2][-]{subsection.4.3}{Joint Probability Density Function}{section.4}% 21
+\BOOKMARK [2][-]{subsection.4.4}{Marginal Probability Density Function}{section.4}% 22
+\BOOKMARK [2][-]{subsection.4.5}{Law of Total Probability}{section.4}% 23
+\BOOKMARK [1][-]{section.5}{Two random variables: select from topics such as covariance and correlation, conditional expectation, conditional variance and the bivariate normal distribution.}{}% 24
+\BOOKMARK [2][-]{subsection.5.1}{Conditional Variance}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.2}{Covarince and Correlation}{section.5}% 26
+\BOOKMARK [1][-]{section.6}{Generating functions \(possibly with a focus on how probability generating functions relate to thinning of a Poisson process\).}{}% 27
+\BOOKMARK [2][-]{subsection.6.1}{The Poisson Proces}{section.6}% 28
+\BOOKMARK [2][-]{subsection.6.2}{Thinning and Superposition}{section.6}% 29
+\BOOKMARK [1][-]{section.7}{Limit theorems.}{}% 30
+\BOOKMARK [2][-]{subsection.7.1}{The Law of Large Numbers}{section.7}% 31
+\BOOKMARK [1][-]{section.8}{Markov chains.}{}% 32
+\BOOKMARK [2][-]{subsection.8.1}{Discrete-Time Markov Chains}{section.8}% 33
+\BOOKMARK [3][-]{subsubsection.8.1.1}{Classification of States}{subsection.8.1}% 34
+\BOOKMARK [3][-]{subsubsection.8.1.2}{Stationary Distribution}{subsection.8.1}% 35
+\BOOKMARK [3][-]{subsubsection.8.1.3}{Convergence to the Stationary Distribution}{subsection.8.1}% 36
+\BOOKMARK [1][-]{section.9}{Stochastic simulation.}{}% 37
+\BOOKMARK [2][-]{subsection.9.1}{Simulation of Continuous Distributions}{section.9}% 38
