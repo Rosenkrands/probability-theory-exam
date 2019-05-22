@@ -20,6 +20,15 @@
   \end{align*}
 \end{boks}
 
+\begin{table}[h]
+\centering
+\begin{tabular}{l|ll}
+ & With Replacement & Without Replacement \\ \hline
+With regard to order & \multicolumn{1}{l|}{$n^k$} & \multicolumn{1}{l|}{$n(n - 1)\cdots(n - k - 1) = \dfrac{n!}{(n - k)!} = (n)_k$} \\ \cline{2-3}
+Without regard to order & \multicolumn{1}{l|}{$\binom{n - 1 - k}{k}$} & \multicolumn{1}{l|}{$\binom{n}{k} = \dfrac{n!}{(n - k)!}$} \\ \cline{2-3}
+\end{tabular}
+\end{table}
+
 \subsection{Law of Total Probability}
 \begin{boks}{Theorem 1.1 (Law of Total Probability)}
     Let $B_1, B_2, \ldots$ be a sequence of events such that

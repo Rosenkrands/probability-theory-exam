@@ -6,7 +6,7 @@
 \begin{proof}
   Start with $F_Y$, the distribution function of $Y$. Take $x$ in the range of $Y$ to obtain
   \begin{align*}
-    F_Y(x) &= P(F^{-1}(U) \leq x)
+    F_Y(x) &= P(F^{-1}(U) \leq x) \\
     &= P(U \leq F(x)) = F_U(F(x)) = F(x)
   \end{align*}
   where the last equality follows since $F_U(u) = u$ if $0 \leq u \leq 1$. The argument here is $u = F(x)$, which is between $0$ and $1$ since $F$ is a cdf.
