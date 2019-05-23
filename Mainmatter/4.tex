@@ -24,12 +24,17 @@ for $x,y \in \mathbb{R}$. Notice that there is a slight abuse of notation here, 
 \begin{boks}{Proposition 3.2}
   If $(X, Y)$ has joint pmf $p$, then the marginal pmfs of $X$ and $Y$ are
   \begin{align*}
-    p_X(x_j) = \sum_{k = 1}^\infty p(x_j, y_k), \quad j = 1, 2, \ldots
-    P_Y(y_k) = \sum_{j = 1}^\infty p(x_j, y_k), \quad k = 1, 2, \ldots
+    p_X(x_j) &= \sum_{k = 1}^\infty p(x_j, y_k), \quad j = 1, 2, \ldots \\
+    P_Y(y_k) &= \sum_{j = 1}^\infty p(x_j, y_k), \quad k = 1, 2, \ldots
   \end{align*}
 \end{boks}
 \begin{proof}
-
+  \begin{align*}
+    p_X(x_j)  &= P(X = x_j) = P(X = x_j \cap S) \\
+              &= P\bigg(X = x_j, \bigcup_{k = 1}^\infty \{Y = y_k\}\bigg) =
+              P\bigg( \bigcup_{k = 1}^\infty [X = x_j, Y = y_k] \bigg) \\
+              &= \sum_{k = 1}^{\infty} P(X = x_j, Y = y_k) = \sum_{k = 1}^\infty p(x_j, y_k)
+  \end{align*}
 \end{proof}
 
 \subsection{Joint Probability Density Function}

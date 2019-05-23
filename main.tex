@@ -21,6 +21,9 @@
 \counterwithin{equation}{section}
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
 \newcommand{\upint}[2]{
   \overline{\int_{#1}^{#2}}
 }
