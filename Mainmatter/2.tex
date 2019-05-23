@@ -89,3 +89,30 @@ We prove this in the discrete case, for $a > 0$. Let $Y = aX + b$, and note that
 \end{align*}
 and we are done.
 \end{proof}
+
+\begin{boks}{Definition 2.13}
+  If $X$ has probability mass function
+  \begin{align*}
+    p(k) = \binom{n}{k} p^k (1 - p)^{n - k}, \quad k = 0, 1, \ldots, n
+  \end{align*}
+  it is said to a \textit{binomial distribution} with parameters $n$ and $p$, and we write $X \sim bin(n,p)$
+\end{boks}
+
+\begin{boks}{Proposition 2.17}
+  If $X \sim bin(n, p)$, then
+  \begin{align*}
+    E[X] = np \quad \text{and} \quad \var[X] = np(1 - p)
+  \end{align*}
+\end{boks}
+\begin{proof}
+  First note that, by problem 24(b) in Chapter 1
+  \begin{align*}
+    kp(k) = np \binom{n - 1}{k - 1} p^{k - 1}
+  \end{align*}
+  and we get
+  \begin{align*}
+    E[X] = \sum_{k = 0}^n kp(k) = np \sum_{k = 1}^n \binom{n - 1}{k - 1}p^{k - 1}(1 - p)^{n - k} = np
+  \end{align*}
+  since the terms in the sum are the probabilities in a binomial distribution with parameters $n - 1$, and $p$ and hence the sum equals 1.
+  The proof of the variance formula is left for problem 65.
+\end{proof}

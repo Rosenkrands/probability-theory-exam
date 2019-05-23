@@ -149,3 +149,32 @@ By proposition 2.12, $E[g(X)] = \int_{-\infty}^\infty g(x)f_X(x)dx$, we have
 % \end{align*}
 % Which gives the desired inequality.
 % \end{proof}
+
+\begin{boks}{Defintion 2.17}
+  If the pdf of $X$ is
+  \begin{align*}
+    f(x) = \lambda e^{-\lambda x}, \quad x \geq 0
+  \end{align*}
+  then $X$ is said to have an \textit{exponential distribution} with parameter $\lambda > 0$, written $X \sim exp(\lambda)$.
+\end{boks}
+
+\begin{boks}{Proposition 2.22}
+  If $X \sim exp(\lambda)$, then
+  \begin{align*}
+    E[X] = \frac{1}{\lambda}, \quad \text{and} \quad \var[X] = \frac{1}{\lambda^2}
+  \end{align*}
+\end{boks}
+\begin{proof}
+  Direct computaion gives
+  \begin{align*}
+    E[X] = \int_0^\infty x \lambda e^{-\lambda x}dx = \frac{1}{\lambda}
+  \end{align*}
+  by partial integration. For the variance we need $E[X^2]$:
+  \begin{align*}
+    E[X^2] = \int_0^\infty x^2 \lambda e^{-\lambda x}dx = \frac{2}{\lambda^2}
+  \end{align*}
+  This gives
+  \begin{align*}
+    \var[X] = E[X^2] - (E[X])^2 = \frac{1}{\lambda^2}
+  \end{align*}
+\end{proof}
