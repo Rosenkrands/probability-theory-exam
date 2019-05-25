@@ -60,7 +60,6 @@ A function $f$ is a possible joint pdf for the random variables $X$ and $Y$ if a
     \item $\int_{-\infty}^\infty \int_{-\infty}^\infty f(x,y)dx\  dy = 1$
 \end{enumerate}
 \end{boks}
-\newpage
 \subsection{Marginal Probability Density Function}
 
 \begin{boks}{Proposition 3.5}
@@ -111,6 +110,17 @@ Suppose that $X$ and $Y$ are jointly continuous with joint pdf $f$. Then $X$ and
     f(x, y) = f_X(x)f_Y(y)
 \end{align*}
 for all $x,y \in \mathbb{R}$.
+\end{boks}
+
+\begin{boks}{Proposition 3.11}
+  Let $(X, Y)$ be a random vector with joint pmf $p$ or joint pdf $f$ and let $g:\mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}$ be any function. Then
+  \begin{align*}
+    E[g(X, Y)] =
+    \begin{cases}
+      \displaystyle\sum_{j = 1}^\infty \sum_{k = 1}^\infty g(x_j, y_k) p(x_j, y_k) &\text{if $(X,Y)$ is discrete} \\ \\
+      \displaystyle\int_{-\infty}^\infty \int_{-\infty}^\infty g(x,y) f(x,y) dx dy &\text{if $(X, Y)$ is continuous}
+    \end{cases}
+  \end{align*}
 \end{boks}
 
 % \begin{boks}{Corrollary 3.1}

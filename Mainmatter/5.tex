@@ -205,26 +205,20 @@ There is also a ``law of total variance'', which looks slightly more complicated
 %   \end{align*}
 %   for $x,y \in \mathbb{R}$, then $(X,Y)$ is said to have a \textit{bivariate normal distribution}.
 % \end{boks}
-% \begin{boks}{Proposition 3.27}
-%   Let $(X,Y)$ have a bivariate normal distribution with parameters $\mu_1, \mu_2, \sigma_1, \sigma_2, \rho$. Then
-%   \begin{enumerate}
-%     \item $X \sim N(\mu_1, \sigma_1^2)$ and $Y \sim N(\mu_2, \sigma_2^2)$
-%     \item $\rho$ is the correlation coefficient of $X$ and $Y$
-%   \end{enumerate}
-% \end{boks}
-% \begin{proof}
-%   \textbf{mangler}
-% \end{proof}
-% \begin{boks}{Proposition 3.28}
-%   Let $(X, Y)$ be bivariate normal. Then, for fixed $x \in \mathbb{R}$
-%   \begin{align*}
-%     Y|X = x \sim N \left( \mu_2 + \rho\frac{\sigma_2}{\sigma_1}(x - \mu_1)
-%     , \sigma_2^2(1 - \rho^2) \right)
-%   \end{align*}
-% \end{boks}
-% \begin{proof}
-%   \textbf{mangler}
-% \end{proof}
+\begin{boks}{Proposition 3.27}
+  Let $(X,Y)$ have a bivariate normal distribution with parameters $\mu_1, \mu_2, \sigma_1, \sigma_2, \rho$. Then
+  \begin{enumerate}
+    \item $X \sim N(\mu_1, \sigma_1^2)$ and $Y \sim N(\mu_2, \sigma_2^2)$
+    \item $\rho$ is the correlation coefficient of $X$ and $Y$
+  \end{enumerate}
+\end{boks}
+\begin{boks}{Proposition 3.28}
+  Let $(X, Y)$ be bivariate normal. Then, for fixed $x \in \mathbb{R}$
+  \begin{align*}
+    Y|X = x \sim N \left( \mu_2 + \rho\frac{\sigma_2}{\sigma_1}(x - \mu_1)
+    , \sigma_2^2(1 - \rho^2) \right)
+  \end{align*}
+\end{boks}
 % \begin{boks}{Proposition 3.29}
 %   Let $(X,Y)$ be bivariate normal. Then $X$ and $Y$ are independent if and only if they are uncorrelated.
 % \end{boks}

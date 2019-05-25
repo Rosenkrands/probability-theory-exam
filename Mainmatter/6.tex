@@ -1,26 +1,34 @@
 % !TEX root = ../main.tex
 
-\textbf{Noget af det der er med her skal postuleres uden bevis!}
+% \textbf{Noget af det der er med her skal postuleres uden bevis!}
 
 % \textit{Generating functions}, or \textit{transforms}, are very useful in probability theory as in other fields of mathematics. Several different generating functions are used, depending on the type of random variable. We will discuss two, one that is useful for discrete random variables and the other for continuous random variables.
 
 % \subsection{The Probability Generating Function}
 % When we study nonnegative, integer-valued random variables, the following function proves to be a useful tool.
 %
-% \begin{boks}{Definition 3.23}
-%   Let $X$ be nonnegative and integer valued. The function
-%   \begin{align*}
-%     G_X(s) = E[s^X] = \sum_{k=0}^\infty s^kP(X=k) \quad 0 \leq s \leq 1
-%   \end{align*}
-%   is called the \textit{probability generating function} (pgf) of $X$.
-% \end{boks}
-%
-% \begin{boks}{Corollary 3.12}
-%   Let $X$ be a nonnegative and integer valued with pgf $G_X$. then
-%   \begin{align*}
-%     G_X(0) = p_X(0) \quad \text{and} \quad G_X(1) = 1
-%   \end{align*}
-% \end{boks}
+\begin{boks}{Definition 3.23}
+  Let $X$ be nonnegative and integer valued. The function
+  \begin{align*}
+    G_X(s) = E[s^X] = \sum_{k=0}^\infty s^kP(X=k) \quad 0 \leq s \leq 1
+  \end{align*}
+  is called the \textit{probability generating function} (pgf) of $X$.
+\end{boks}
+Note that by Proposition 2.12 we compute $G_X$ as the power series
+\begin{align*}
+  G_X(s) = \sum_{k = 0}^\infty s^k P_X(k), \quad 0 \leq s \leq 1
+\end{align*}
+where $p_X$ is the pmf of $X$. If the range of $X$ is finite, the sum is finite. Note that
+\begin{align*}
+  G_X(s) = p_X(0) + \sum_{k = 1}^\infty s^k p_X(k)
+\end{align*}
+which immediately gives the following corrolarry
+\begin{boks}{Corollary 3.12}
+  Let $X$ be a nonnegative and integer valued with pgf $G_X$. then
+  \begin{align*}
+    G_X(0) = p_X(0) \quad \text{and} \quad G_X(1) = 1
+  \end{align*}
+\end{boks}
 %
 % \begin{boks}{Proposition 3.36}
 %   Let $X$ be nonnegative and integer valued with pgf $G_X$. then
@@ -228,26 +236,26 @@ In practical applications, we need to be careful to use the same time units for 
   which we recognize as the pgf of a Poisson distribution with parameter $\lambda pt$.
 \end{proof}
 
-\begin{boks}{Proposition 3.45}
-  The processes of observed and unobserved points are independent.
-\end{boks}
-
-\begin{proof}
-  Fix an interval of length $t$, let $X(t)$ be the total number of points, and $X_p(t)$ and $X_{1 - p}(t)$ the number of observed and unobserved points, respectively.
-  Hence, $X(t) = X_p(t) + X_{1 - p}(t)$ and by Proposition 3.44, we obtain
-  \begin{align*}
-    X_p(t) \sim \poi(\lambda pt) \quad \text{and} \quad X_{1 - p}(t) \sim \poi(\lambda(1 - p)t).
-  \end{align*}
-  Also given that $X(t) = n$, the number of observed points has a binomial distribution with parameters $n$ and $p$. We get
-  \begin{align*}
-    P(X_p(t) = j, X_{1-p}(t) = k) &= P(X_p(t) = j, X(t) = k + j)\\
-    &= P(X_p(t) = j | X(t) = k + j)P(X(t) = k + j)\\
-    &=\binom{k + j}{j} p^j(1 - p)^ke^{-\lambda t} \frac{(\lambda t)^{k + j}}{(k + j)!}\\
-    &= \frac{(k + j)!}{k!j!}p^j(1 - p)^ke^{-\lambda t} \frac{(\lambda t)^{k + j}}{(k + j)!}\\
-    &= e^{-\lambda pt} \frac{(\lambda pt)^j}{j!}e^{-\lambda(1 - p)t} \frac{(\lambda(1 - p)t)^k}{k!}\\
-    &= P(X_p(t) = j)P(X_{1 - p}(t) = k)
-  \end{align*}
-\end{proof}
+% \begin{boks}{Proposition 3.45}
+%   The processes of observed and unobserved points are independent.
+% \end{boks}
+%
+% \begin{proof}
+%   Fix an interval of length $t$, let $X(t)$ be the total number of points, and $X_p(t)$ and $X_{1 - p}(t)$ the number of observed and unobserved points, respectively.
+%   Hence, $X(t) = X_p(t) + X_{1 - p}(t)$ and by Proposition 3.44, we obtain
+%   \begin{align*}
+%     X_p(t) \sim \poi(\lambda pt) \quad \text{and} \quad X_{1 - p}(t) \sim \poi(\lambda(1 - p)t).
+%   \end{align*}
+%   Also given that $X(t) = n$, the number of observed points has a binomial distribution with parameters $n$ and $p$. We get
+%   \begin{align*}
+%     P(X_p(t) = j, X_{1-p}(t) = k) &= P(X_p(t) = j, X(t) = k + j)\\
+%     &= P(X_p(t) = j | X(t) = k + j)P(X(t) = k + j)\\
+%     &=\binom{k + j}{j} p^j(1 - p)^ke^{-\lambda t} \frac{(\lambda t)^{k + j}}{(k + j)!}\\
+%     &= \frac{(k + j)!}{k!j!}p^j(1 - p)^ke^{-\lambda t} \frac{(\lambda t)^{k + j}}{(k + j)!}\\
+%     &= e^{-\lambda pt} \frac{(\lambda pt)^j}{j!}e^{-\lambda(1 - p)t} \frac{(\lambda(1 - p)t)^k}{k!}\\
+%     &= P(X_p(t) = j)P(X_{1 - p}(t) = k)
+%   \end{align*}
+% \end{proof}
 
 % \begin{boks}{Proposition 3.46}
 %   Consider two independent Poisson processes with rate $\lambda_1$ and $\lambda_2$, respectively. The superposition of the two processes is a Poisson process with rate $\lambda_1 + \lambda_2$.

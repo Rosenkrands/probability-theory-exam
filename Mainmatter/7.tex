@@ -37,33 +37,42 @@ We say that $\bar{X}$ \textit{converges in probability} to $\mu$ and write
 \begin{align*}
   \bar{X} \xrightarrow{P} \mu \quad \text{as} \quad n \rightarrow \infty
 \end{align*}
-\begin{boks}{Corollary 4.1}
-  Consider an experiment where the event $A$ occurs with probability $p$. Repeat the experiment independently, let $S_n$ be the number of times we get the event $A$ in $n$ trials, and let $f_n = S_n/n$, the relative frequency. Then
-  \begin{align*}
-    f_n \xrightarrow{P} p \quad \text{as} \quad n \rightarrow \infty
-  \end{align*}
-\end{boks}
-\vspace{-5mm}
-\begin{proof}
-  Define the indicators
-  \begin{align*}
-    I_k =
-    \begin{cases}
-      1 \qquad \text{if we get $A$ in the $k$th trial} \\
-      0 \qquad \text{otherwise}
-    \end{cases}
-  \end{align*}
-for $k = 1, 2, \ldots, n$. Then the $I_k$ are i.i.d. and we know from Section 2.5.1 that they have mean $\mu = p$. Since $f_n$ is the sample mean of the $I_k$, the law of large numbers gives $f_n \xrightarrow{P} p$ as $n \rightarrow \infty$.
-\end{proof}
-\vspace{-4mm}
+% \begin{boks}{Corollary 4.1}
+%   Consider an experiment where the event $A$ occurs with probability $p$. Repeat the experiment independently, let $S_n$ be the number of times we get the event $A$ in $n$ trials, and let $f_n = S_n/n$, the relative frequency. Then
+%   \begin{align*}
+%     f_n \xrightarrow{P} p \quad \text{as} \quad n \rightarrow \infty
+%   \end{align*}
+% \end{boks}
+% \vspace{-5mm}
+% \begin{proof}
+%   Define the indicators
+%   \begin{align*}
+%     I_k =
+%     \begin{cases}
+%       1 \qquad \text{if we get $A$ in the $k$th trial} \\
+%       0 \qquad \text{otherwise}
+%     \end{cases}
+%   \end{align*}
+% for $k = 1, 2, \ldots, n$. Then the $I_k$ are i.i.d. and we know from Section 2.5.1 that they have mean $\mu = p$. Since $f_n$ is the sample mean of the $I_k$, the law of large numbers gives $f_n \xrightarrow{P} p$ as $n \rightarrow \infty$.
+% \end{proof}
+
+% In the previous section, we saw that $\bar{X} \xrightarrow{P} \mu$ for $n \rightarrow \infty$ or, in other words, that $\bar{X} \equiv \mu$ if $n$ is large.
+% It would be good to also have an idea of how accurate this approximation is, that is, have an idea of the extent to which $\bar{X}$ tends to deviate from $\mu$.
+% The next result gives the answer.
 \begin{boks}{Theorem 4.2 (The Central Limit Theorem)}
   Let $X_1, X_2, \ldots$ be i.i.d. random variables with mean $\mu$ and variance $\sigma^2 < \infty$ and let $S_n = \sum_{k = 1}^{n} X_k$. Then, for each $x \in \mathbb{R}$, we have
   \begin{align*}
-    \sqrt{n}\frac{\bar{X}_n - \mu}{\sigma} \quad \xrightarrow[n \rightarrow \infty]{d} \quad N(0,1)
+    P\left(\frac{S_n - n\mu}{\sigma \sqrt{n}} \leq x \right) \quad \xrightarrow[n \rightarrow \infty]{d} \quad \Phi(x)
   \end{align*}
   as $n \rightarrow \infty$, where $\Phi$ is the cdf of the standard normal distribution.
 \end{boks}
-\vspace{-5mm}
+In other words
+\begin{align*}
+  \sqrt{n}\frac{\bar{X}_n - \mu}{\sigma} \quad \xrightarrow[n \rightarrow \infty]{d} \quad N(0,1)
+\end{align*}
+Thus, the central limit theorem states that the sum of i.i.d. random variables has an approximate normal distribution \textit{regardless of the distribution of the $X_k$}!
+The $X_k$ do not even have to be continuous random variables; if we just add enough random variables, the sum becomes approximately normal anyway.
+
 \begin{boks}{Example 4.5}
   Consider again bufons needle problem. Recall that the probability that the randomly tossed needle intersects a line is $2/\pi$ and how we argued in the previous section that $2/f_n \xrightarrow{P} \pi$ as $ n \rightarrow \infty$. Let $\hat{\pi}$ denote our estimate of $\pi$ after $n$ tosses:
   \begin{align*}
