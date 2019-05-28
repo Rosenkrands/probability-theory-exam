@@ -73,6 +73,35 @@ In other words
 Thus, the central limit theorem states that the sum of i.i.d. random variables has an approximate normal distribution \textit{regardless of the distribution of the $X_k$}!
 The $X_k$ do not even have to be continuous random variables; if we just add enough random variables, the sum becomes approximately normal anyway.
 
+\begin{proof}
+  We will only outline the proof and skip the details. The main idea is to work with moment generating functions instead of working directly with the distribution functions. Thus, we will show that the moment generating function of $(S_n - n \mu)/\sigma \sqrt{n}$ converges to the moment generating function of a standard normal distribution.
+
+  Let us first assume that $\mu = 0$ and $\sigma^2 = 1$.
+  Let $Y_n = S_n/\sqrt{n}$, and let $M(t)$ be the mgf of the $X_k$. Combining Corollary 3.14 and Proposition 3.40, we see that $Y_n$ has the mgf
+  \begin{align}\label{4.1}
+    M_{Y_n}(t) = \bigg( M\bigg( \frac{t}{\sqrt{n}} \bigg) \bigg)^n
+  \end{align}
+  Now do a taylor expansion of $M(s)$ around $s = 0$ to obtain
+  \begin{align*}
+    M(s) = M(0) + sM'(0) + s^2\frac{M''(0)}{2}
+  \end{align*}
+  where we hae neglected the error term. By Corollary 3.15, we get
+  \begin{align*}
+    M(s) = 1 + \frac{s^2}{2}
+  \end{align*}
+  (remember that $\mu = 0$ and $\sigma^2 = 1$).
+  By inserting this into \eqref{4.1}, we obtain
+  \begin{align*}
+    M_{Y_n}(t) = \bigg( 1 + \frac{t^2}{2n} \bigg)^n \rightarrow e^{t^2/2}
+    \quad \text{as} \quad
+    n \rightarrow \infty
+  \end{align*}
+  which we recognize as from Example 3.66 as the mgf of the stadard normal distribution.
+  The result for general $\mu$ and $\sigma^2$ follows by considering the random variables $X^\ast_k = (X_k - \mu)/\sigma$, which have mean $0$ and variance $1$, and we leave it to the reader to finish the proof.
+
+  The details we have omitted include and explanation of why convergence of the mgfs is the same as convergence of the distribution functions (which is a fairly deep result and not exactly a detail) and why the error term in the Taylor expansion can be neglected as $n \rightarrow \infty$.
+\end{proof}
+
 \begin{boks}{Example 4.5}
   Consider again bufons needle problem. Recall that the probability that the randomly tossed needle intersects a line is $2/\pi$ and how we argued in the previous section that $2/f_n \xrightarrow{P} \pi$ as $ n \rightarrow \infty$. Let $\hat{\pi}$ denote our estimate of $\pi$ after $n$ tosses:
   \begin{align*}

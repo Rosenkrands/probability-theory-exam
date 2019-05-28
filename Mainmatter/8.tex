@@ -31,6 +31,29 @@ and call these the \textit{transition probabilities} of the Markov chain. Thus, 
   \text{(b)} \ \sum_{j \in S} p_{ij} = 1 \quad \text{for all} \ i \in S
 \end{align*}
 
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[roundnode/.style={circle, draw=black!60, fill=black!5, very thick, minimum size=7mm}]
+    % Place nodes
+    \node[roundnode] (nul)                                        {0};
+    \node[roundnode] (et)   [right of = nul, node distance=15mm]  {1};
+    \node[roundnode] (to)   [right of = et, node distance=15mm]   {2};
+    \node[roundnode] (tre)  [right of = to, node distance=15mm]   {3};
+    \node[roundnode] (fire) [right of = tre, node distance=15mm]  {4};
+    \node[roundnode] (fem)  [right of = fire, node distance=15mm] {5};
+    % Create edges
+    % Above
+      \draw[->] (nul)   to [out = 45, in = 135] node[above] {1}   (et);
+      \draw[->] (et)    to [out = 45, in = 135] node[above] {1}   (to);
+      \draw[->] (to)    to [out = 45, in = 135] node[above] {1}   (tre);
+      \draw[->] (tre)   to [out = 45, in = 135] node[above] {1/2} (fire);
+      \draw[->] (fire)  to [out = 45, in = 135] node[above] {1}   (fem);
+    % Below
+      \draw[->] (tre) to [out = 225, in = 325] node [below] {1/2} (nul);
+      \draw[->] (fem) to [out = 215, in = 300] node [below] {1}   (nul);
+  \end{tikzpicture}
+\end{figure}
+
 % \subsubsection{Time Dynamics of a Markov Chain}
 % The most fundamental aspect of a Markov chain in which we are interested is how it develops over time.
 % The transition matrix provides us with a despriction od the stepwise behaviour, but suppose that we want to compute the distribution of the chain two steps ahead. Let
@@ -67,6 +90,7 @@ If you wish to be more mathemaical, the relastion ``$\leftrightarrow$'' is an eq
 \begin{boks}{Definition 8.3}
   If all states in $S$ communicate with each other, the Markov chain is said to be \textit{irreducible}.
 \end{boks}
+This means that our Markov chain we are is irreducible.
 \begin{boks}{Definition 8.4}
   Consider a state $i \in S$ and the $\tau_i$ be the number of steps it takes for the chain to first visit $i$. Thus
   \begin{align*}
@@ -74,6 +98,7 @@ If you wish to be more mathemaical, the relastion ``$\leftrightarrow$'' is an eq
   \end{align*}
   where $\tau_i = \infty$ if $i$ is never visited. If $P_i(\tau_i < \infty) = 1$, the state $i$ is said to be \textit{recurrent} and if $P_i(\tau_i < \infty) < 1$, it is said to be \textit{transient}.
 \end{boks}
+We can conclude that all states in our chain is recurrent.
 % \begin{boks}{Corollary 8.1}
 %   In an irreducible Markov chain, either all states are trasient or all states are recurrent.
 % \end{boks}
@@ -83,13 +108,13 @@ If you wish to be more mathemaical, the relastion ``$\leftrightarrow$'' is an eq
 % \begin{boks}{Corollary 8.3}
 %   If a Markov chain has finite state space, there is at least one recurrent state.
 % \end{boks}
-\begin{boks}{Proposition 8.1}
-  State $i$ is
-  \begin{align*}
-    \text{transient if} \quad &\sum_{n = 1}^\infty p_{ii}^{(n)} < \infty \\
-    \text{recurrent if} \quad &\sum_{n = 1}^\infty p_{ii}^{(n)} = \infty
-  \end{align*}
-\end{boks}
+% \begin{boks}{Proposition 8.1}
+%   State $i$ is
+%   \begin{align*}
+%     \text{transient if} \quad &\sum_{n = 1}^\infty p_{ii}^{(n)} < \infty \\
+%     \text{recurrent if} \quad &\sum_{n = 1}^\infty p_{ii}^{(n)} = \infty
+%   \end{align*}
+% \end{boks}
 
 \subsubsection{Stationary Distribution}
 \begin{boks}{Definition 8.5}
@@ -105,6 +130,35 @@ If you wish to be more mathemaical, the relastion ``$\leftrightarrow$'' is an eq
 \begin{boks}{Proposition 8.3}
   If $S$ is finite and the Markov chain is irreducible, a unique stationary distribution $\boldsymbol{\pi}$ exists.
 \end{boks}
+The transition matrix for our chain in given as the following
+\begin{align*}
+  P =
+  \begin{bmatrix}
+      0 & 1 & 0 & 0 & 0 & 0  \\
+        &   & 1 &   &     &  \\
+        &   &   & 1 &     &  \\
+    1/2 &   &   &   & 1/2 &  \\
+        &   &   &   &     &1 \\
+    1   &   &   &   &     &
+  \end{bmatrix}
+\end{align*}
+The stationary distribution is defined at
+\begin{align*}
+  \pi P = \pi
+\end{align*}
+From Proposition 8.3 we can conclude that a unique stationary distribution exists
+\begin{align*}
+  \pi_0 = \frac{1}{2} + \pi_5, \quad
+  \pi_1 = \pi_0, \quad
+  \pi_2 = \pi_1, \quad
+  \pi_3 = \pi_2, \quad
+  \pi_4 = \frac{1}{2} \pi_3, \quad
+  \pi_5 = \pi_4
+\end{align*}
+This gives the stationary distribution
+\begin{align*}
+  \pi = \left[\frac{1}{5}, \frac{1}{5}, \frac{1}{5}, \frac{1}{5}, \frac{1}{10}, \frac{1}{10}\right]
+\end{align*}
 \begin{boks}{Definition 8.6}
   Let $i$ be a recurrent state. If $E_i[\tau_i] < \infty$, then $i$ is said to be \textit{positive recurrent}. If $E_i[\tau_i] = \infty$, $i$ is said to be \textit{null recurrent}.
 \end{boks}
@@ -119,21 +173,23 @@ If you wish to be more mathemaical, the relastion ``$\leftrightarrow$'' is an eq
 %   If this is the case, $\boldsymbol{\pi}$ is unique and has $\pi_j > 0$ for all $j \in S$.
 % \end{boks}
 
-\subsubsection{Convergence to the Stationary Distribution}
-% \begin{boks}{Definition 8.7}
-%   Let $p_{ij}^{(n)}$ be the $n$-step transition probabilities of a Markov chain.
-%   If there exists a probability distribution \textbf{q} on $S$ such that
-%   \begin{align*}
-%     p_{ij}^{(n)} \rightarrow q_j \quad \text{as} \quad n \rightarrow \infty \quad \text{for all} i,j \in S
-%   \end{align*}
-%   we call \textbf{q} the \textit{limit distribution} of the Markov chain.
-% \end{boks}
 \begin{boks}{Definition 8.8}
   The \textit{period} of state $i$ is defined as
   \begin{align*}
     d(i) = \gcd \{ n \geq 1 \ : \ p_{ii}^{(n)} > 0 \}
   \end{align*}
   the greatest common divisor of lengths of cycles through which it is possible to return to $i$. If $d(i) = 1$, state $i$ is said to be \textit{aperiodic}; otherwise it is called \textit{periodic}. Note that this is a class property, which means if $i \leftrightarrow j$ and either $i$ or $j$ is periodic so is the other. Likewise for aperiodic.
+\end{boks}
+
+In our chain we observe that a state can reach itself in either $4$ or $6$ steps, which means that all states in our chain is periodic with period $2$, because this is the greatest common divisor of $4$ and $6$.
+\subsubsection{Convergence to the Stationary Distribution}
+\begin{boks}{Definition 8.7}
+  Let $p_{ij}^{(n)}$ be the $n$-step transition probabilities of a Markov chain.
+  If there exists a probability distribution \textbf{q} on $S$ such that
+  \begin{align*}
+    p_{ij}^{(n)} \rightarrow q_j \quad \text{as} \quad n \rightarrow \infty \quad \text{for all} i,j \in S
+  \end{align*}
+  we call \textbf{q} the \textit{limit distribution} of the Markov chain.
 \end{boks}
 \begin{boks}{Theorem 8.1}
   Consider an irreducible, positive recurrent, and aperiodic Markov chain with stationary distribution $\boldsymbol{\pi}$ and $n$-step transition probabilities $p_{ij}^{(n)}$. Then
