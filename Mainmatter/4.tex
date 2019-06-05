@@ -4,22 +4,32 @@
 Let $X$ and $Y$ be random variables. The pair $(X,Y)$ is then called a (two-dimensional) \textit{random vector.}
 \end{boks}
 
-\subsection{Joint Cumulative Distribution Function}
-\begin{boks}{Definition 3.2}
-The \textit{joint distribution function} (joint cdf) of $(X,Y)$ is defined as
-\begin{align*}
-    F(x,y) = P(X \leq x, Y \leq y)
-\end{align*}
-for $x,y \in \mathbb{R}$.
+% \subsection{Joint Cumulative Distribution Function}
+% \begin{boks}{Definition 3.2}
+% The \textit{joint distribution function} (joint cdf) of $(X,Y)$ is defined as
+% \begin{align*}
+%     F(x,y) = P(X \leq x, Y \leq y)
+% \end{align*}
+% for $x,y \in \mathbb{R}$.
+% \end{boks}
+%
+% \begin{boks}{Proposition 3.1 (Marginal cdf)}
+% If $(X, Y)$ has joint cdf $F$, then $X$ and $Y$ have cdfs
+% \begin{align*}
+%     F_X(x) = F(x, \infty) \quad \text{and} \quad F_Y(y) = F(\infty, y)
+% \end{align*}
+% for $x,y \in \mathbb{R}$. Notice that there is a slight abuse of notation here, $F(x,\infty)$ refers to $\lim_{y \rightarrow \infty} F(x, y)$.
+% \end{boks}
+\subsection{Joint probability mass function}
+\begin{boks}{Definition 3.4}
+  If $(X, Y)$ is discrete with range $\{(x_j, y_k) \ : \ j,k = 1,2, \ldots\}$, the function
+  \begin{align*}
+    p(x_j, y_k) = P(X = x_j, Y = y_k)
+  \end{align*}
+  is called the \textit{joint pmf} of $(X, Y)$.
 \end{boks}
 
-\begin{boks}{Proposition 3.1 (Marginal cdf)}
-If $(X, Y)$ has joint cdf $F$, then $X$ and $Y$ have cdfs
-\begin{align*}
-    F_X(x) = F(x, \infty) \quad \text{and} \quad F_Y(y) = F(\infty, y)
-\end{align*}
-for $x,y \in \mathbb{R}$. Notice that there is a slight abuse of notation here, $F(x,\infty)$ refers to $\lim_{y \rightarrow \infty} F(x, y)$.
-\end{boks}
+\subsection{Marginal probability mass function}
 
 \begin{boks}{Proposition 3.2}
   If $(X, Y)$ has joint pmf $p$, then the marginal pmfs of $X$ and $Y$ are
@@ -37,6 +47,29 @@ for $x,y \in \mathbb{R}$. Notice that there is a slight abuse of notation here, 
   \end{align*}
 \end{proof}
 
+\begin{boks}{Proposition 3.9}
+  Suppose that $(X, Y)$ is discrete with joint pmf $p$. Then $X$ and $Y$ are independent if and only if
+  \begin{align*}
+    p(x, y) = p_X(x)p_Y(y)
+  \end{align*}
+  for all $x,y \in \mathbb{R}$
+\end{boks}
+
+\begin{proof}
+  Suppose that $X$ and $Y$ are independent.
+  In the definition of independence, choose $A = \{x\}$ and $B = \{y\}$ to obtain
+  \begin{align*}
+    p(x,y) = P(X = x, Y = y) = P(X = x)P(Y = y) = p_X(x)p_Y(y)
+  \end{align*}
+  Conversely suppose that $p(x,y) = p_X(x)p_Y(y)$ and take two subsets of $\mathbb{R}$, $A$ and $B$.
+  Then
+  \begin{align*}
+    P(X \in A, Y \in B) = \sum_{x \in A}\sum_{y \in B}p(x,y)
+                        = \sum_{x \in A}p_X(x)\sum_{y \in B}p_Y(y)
+  \end{align*}
+  which equals $P(X \in A)P(Y \in B)$, and hence $X$ and $Y$ are independent.
+\end{proof}
+
 \subsection{Joint Probability Density Function}
 \begin{boks}{Definition 3.5}
 If there exists a function $f$ such that
@@ -46,12 +79,12 @@ If there exists a function $f$ such that
 for all subsets $B\subseteq \mathbb{R}^2$, then $X$ adn $Y$ are said to be \textit{jointly continuous}. The function $f$ is called the \textit{joint pdf}.
 \end{boks}
 
-\begin{boks}{Propostion 3.3}
-If $X$ and $Y$ are jointly continuous with joint cdf $F$ and joint pdf $f$, then
-\begin{align*}
-    f(x, y) = \frac{\partial^2}{\partial x \partial y} F(x,y), \quad x,y \in \mathbb{R}.
-\end{align*}
-\end{boks}
+% \begin{boks}{Propostion 3.3}
+% If $X$ and $Y$ are jointly continuous with joint cdf $F$ and joint pdf $f$, then
+% \begin{align*}
+%     f(x, y) = \frac{\partial^2}{\partial x \partial y} F(x,y), \quad x,y \in \mathbb{R}.
+% \end{align*}
+% \end{boks}
 
 \begin{boks}{Proposition 3.4}
 A function $f$ is a possible joint pdf for the random variables $X$ and $Y$ if and only if
@@ -70,58 +103,67 @@ Suppose that $X$ and $Y$ are jointly continuous with joint pdf $f$. Then $X$ adn
 \end{align*}
 \end{boks}
 
-\begin{boks}{Definition 3.7}
-Let $(X, Y)$ ne jointly continuous with joint pdf $f$. The \textit{conditional pdf of $Y$ given $X=x$} is defined as
-\begin{align*}
-    f_Y(y|x) = \frac{f(x,y)}{f_X(x)}, \quad y\in\mathbb{R}.
-\end{align*}
-\end{boks}
-\vspace{-5mm}
-\subsection{Law of Total Probability}
-The following proposition is a continuous version of the law of total probability.
-
-\begin{boks}{Proposition 3.6}
-Let $X$ and $Y$ be jointly continuous. Then
-\begin{enumerate}
-    \item
-    \begin{align*}
-        f_Y(y) = \int_{-\infty}^\infty f_Y(y|x)f_X(x)dx, \quad y\in\mathbb{R}
-    \end{align*}
-    \item
-    \begin{align*}
-        P(Y \in B) = \int_{-\infty}^\infty P(Y \in B|X = x)f_X(x)dx, \quad B\subseteq\mathbb{R}.
-    \end{align*}
-\end{enumerate}
-\end{boks}
-
-\begin{proof}
-For (a), just combine Proposition 3.5 with the definition of conditional pdf for (b), part (a) gives
-\begin{align*}
-    P(Y \in B) &= \int_B f_Y(y)dy = \int_B \int_{-\infty}^\infty f_Y(y|x)f_X(x)dx \ dy \\
-    &= \int_{-\infty}^\infty \int_B f_Y(y|x)f_X(x)dy \ dx \\
-    &= \int_{-\infty}^\infty P(Y \in B|X = x) f_X(x)dx
-\end{align*}
-as desired.
-\end{proof}
-
 \begin{boks}{Proposition 3.10}
-Suppose that $X$ and $Y$ are jointly continuous with joint pdf $f$. Then $X$ and $Y$ are independent if and only if
-\begin{align*}
-    f(x, y) = f_X(x)f_Y(y)
-\end{align*}
-for all $x,y \in \mathbb{R}$.
+  Suppose $X$ and $Y$ are jointly continuous with joint pdf $f$.
+  Then $X$ and $Y$ are independent if and only if
+  \begin{align*}
+    f(x,y) = f_X(x)f_Y(y)
+  \end{align*}
+  for all $x,y \in \mathbb{R}$.
 \end{boks}
 
-\begin{boks}{Proposition 3.11}
-  Let $(X, Y)$ be a random vector with joint pmf $p$ or joint pdf $f$ and let $g:\mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}$ be any function. Then
-  \begin{align*}
-    E[g(X, Y)] =
-    \begin{cases}
-      \displaystyle\sum_{j = 1}^\infty \sum_{k = 1}^\infty g(x_j, y_k) p(x_j, y_k) &\text{if $(X,Y)$ is discrete} \\ \\
-      \displaystyle\int_{-\infty}^\infty \int_{-\infty}^\infty g(x,y) f(x,y) dx dy &\text{if $(X, Y)$ is continuous}
-    \end{cases}
-  \end{align*}
-\end{boks}
+% \begin{boks}{Definition 3.7}
+% Let $(X, Y)$ be jointly continuous with joint pdf $f$. The \textit{conditional pdf of $Y$ given $X=x$} is defined as
+% \begin{align*}
+%     f_Y(y|x) = \frac{f(x,y)}{f_X(x)}, \quad y\in\mathbb{R}.
+% \end{align*}
+% \end{boks}
+
+% \subsection{Law of Total Probability}
+% The following proposition is a continuous version of the law of total probability.
+
+% \begin{boks}{Proposition 3.6}
+% Let $X$ and $Y$ be jointly continuous. Then
+% \begin{enumerate}
+%     \item
+%     \begin{align*}
+%         f_Y(y) = \int_{-\infty}^\infty f_Y(y|x)f_X(x)dx, \quad y\in\mathbb{R}
+%     \end{align*}
+%     \item
+%     \begin{align*}
+%         P(Y \in B) = \int_{-\infty}^\infty P(Y \in B|X = x)f_X(x)dx, \quad B\subseteq\mathbb{R}.
+%     \end{align*}
+% \end{enumerate}
+% \end{boks}
+%
+% \begin{proof}
+% For (a), just combine Proposition 3.5 with the definition of conditional pdf for (b), part (a) gives
+% \begin{align*}
+%     P(Y \in B) &= \int_B f_Y(y)dy = \int_B \int_{-\infty}^\infty f_Y(y|x)f_X(x)dx \ dy \\
+%     &= \int_{-\infty}^\infty \int_B f_Y(y|x)f_X(x)dy \ dx \\
+%     &= \int_{-\infty}^\infty P(Y \in B|X = x) f_X(x)dx
+% \end{align*}
+% as desired.
+% \end{proof}
+
+% \begin{boks}{Proposition 3.10}
+% Suppose that $X$ and $Y$ are jointly continuous with joint pdf $f$. Then $X$ and $Y$ are independent if and only if
+% \begin{align*}
+%     f(x, y) = f_X(x)f_Y(y)
+% \end{align*}
+% for all $x,y \in \mathbb{R}$.
+% \end{boks}
+%
+% \begin{boks}{Proposition 3.11}
+%   Let $(X, Y)$ be a random vector with joint pmf $p$ or joint pdf $f$ and let $g:\mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}$ be any function. Then
+%   \begin{align*}
+%     E[g(X, Y)] =
+%     \begin{cases}
+%       \displaystyle\sum_{j = 1}^\infty \sum_{k = 1}^\infty g(x_j, y_k) p(x_j, y_k) &\text{if $(X,Y)$ is discrete} \\ \\
+%       \displaystyle\int_{-\infty}^\infty \int_{-\infty}^\infty g(x,y) f(x,y) dx dy &\text{if $(X, Y)$ is continuous}
+%     \end{cases}
+%   \end{align*}
+% \end{boks}
 
 % \begin{boks}{Corrollary 3.1}
 % \textit{The random variables $X$ and $Y$ are independent if and only if ``the joint is the product of the marginals.''}
