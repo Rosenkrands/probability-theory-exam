@@ -30,24 +30,24 @@ is called the \textit{probability mass function} (pmf) of $X$.
   \end{boks}
 \end{minipage}
 
-\subsection{Cumulative Distribution Function}
-\begin{minipage}{0.7\textwidth}
-  \begin{boks}{Definition 2.4}
-  Let $X$ be any random variable. The function
-  \begin{align*}
-      F(x) = P(X\leq x), \quad \text{for} \ x\in \mathbb{R},
-  \end{align*}
-  is called the (\textit{cumulative}) \textit{distribution function} (cdf) of $X$.
-  \end{boks}
-\end{minipage}
-
-\subsection{Expected Value}
-\begin{boks}{Defintion 2.8}
-Let $X$ be a discrete random variable with range $\{x_1,x_2, \ldots\}$ (finite or countably infinite) and probability mass function $p$. The \textit{expected value} of $X$ is defined as
-\begin{align*}
-    E[X] = \sum_{k=1}^\infty x_k p(x_k).
-\end{align*}
-\end{boks}
+% \subsection{Cumulative Distribution Function}
+% \begin{minipage}{0.7\textwidth}
+%   \begin{boks}{Definition 2.4}
+%   Let $X$ be any random variable. The function
+%   \begin{align*}
+%       F(x) = P(X\leq x), \quad \text{for} \ x\in \mathbb{R},
+%   \end{align*}
+%   is called the (\textit{cumulative}) \textit{distribution function} (cdf) of $X$.
+%   \end{boks}
+% \end{minipage}
+%
+% \subsection{Expected Value}
+% \begin{boks}{Defintion 2.8}
+% Let $X$ be a discrete random variable with range $\{x_1,x_2, \ldots\}$ (finite or countably infinite) and probability mass function $p$. The \textit{expected value} of $X$ is defined as
+% \begin{align*}
+%     E[X] = \sum_{k=1}^\infty x_k p(x_k).
+% \end{align*}
+% \end{boks}
 
 \begin{boks}{Proposition 2.12}
   Let $X$ be a random variable with pmf $p_X$ and let $g \ : \ \mathbb{R} \rightarrow \mathbb{R}$ be any function. Then
@@ -105,13 +105,22 @@ and we are done.
   \end{align*}
 \end{boks}
 \begin{proof}
-  First note that, by problem 24(b) in Chapter 1
+  First note that
   \begin{align*}
-    kp(k) = np \binom{n - 1}{k - 1} p^{k - 1}
+    k \binom{n}{k}  = k \frac{n!}{(n - k)! \ k!}
+                    = n \frac{(n - 1)!}{(n - 1 - (k - 1))! (k - 1)!}
+                    = n \binom{n - 1}{k - 1}
   \end{align*}
   and we get
   \begin{align*}
-    E[X] = \sum_{k = 0}^n kp(k) = np \sum_{k = 1}^n \binom{n - 1}{k - 1}p^{k - 1}(1 - p)^{n - k} = np
+    k p(k)  = k \binom{n}{k} p^k (1 - p)^{n - k}
+            = n \binom{n - 1}{k - 1} p^k (1 - p)^{n - k}
+            = np \binom{n - 1}{k - 1} p^{k - 1} (1 - p)^{n - k}
+  \end{align*}
+  \begin{align*}
+    E[X] = \sum_{k = 0}^n kp(k) &= np \sum_{k = 1}^n \binom{n - 1}{k - 1}p^{k - 1}(1 - p)^{n - k}\\
+    &= np \sum_{k = 0}^{n - 1} \overbrace{\binom{n - 1}{k} p^k (1 - p)^{n - 1 - k}}^{bin(n - 1, p)} \\
+    &= np
   \end{align*}
   since the terms in the sum are the probabilities in a binomial distribution with parameters $n - 1$, and $p$ and hence the sum equals 1.
   The proof of the variance formula is left for problem 65.

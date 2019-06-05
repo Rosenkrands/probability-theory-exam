@@ -4,15 +4,15 @@
 If the cdf $F$ is a continuous and differentiable function, then $X$ is said to be a \textit{continuous random variable}.
 \end{boks}
 
-\subsection{Cumulative Distribution Function}
-\begin{boks}{Proposition 2.3}
-If $F$ is the cdf of any random variable, $F$ has the following properties:
-\begin{enumerate}
-    \item It is nondecreasing
-    \item It is right-continuous
-    \item It has the limits $F(-\infty) = 0$ and $F(\infty) = 1$ (where the limits may or may not be attained at finite $x$).
-\end{enumerate}
-\end{boks}
+% \subsection{Cumulative Distribution Function}
+% \begin{boks}{Proposition 2.3}
+% If $F$ is the cdf of any random variable, $F$ has the following properties:
+% \begin{enumerate}
+%     \item It is nondecreasing
+%     \item It is right-continuous
+%     \item It has the limits $F(-\infty) = 0$ and $F(\infty) = 1$ (where the limits may or may not be attained at finite $x$).
+% \end{enumerate}
+% \end{boks}
 
 % \begin{boks}{Proposition 2.4}
 % Let $X$ be any random variable with cdf $F$. Then
@@ -46,22 +46,22 @@ A function $f$ is a possible pdf of some continuos random variable if and only i
 \end{enumerate}
 \end{boks}
 
-\subsection{Proposition 2.8}
-\begin{boks}{Proposition 2.8}
-Let $X$ be a continuous random variable with pdf $X$, let $g$ be a strictly increasing or strictly decreasing, differentiable function, and let $Y = g(X)$. Then $Y$ has pdf
-\begin{align*}
-    f_Y(y) = \bigg| \frac{d}{dy}g^{-1}(y)\bigg| f_X(g^{-1}(y))
-\end{align*}
-for $y$ in range of $Y$.
-\end{boks}
-\begin{proof}
-  \begin{align*}
-      F_Y(y)&=P(Y\leq y)=P(g(X)\leq y)=P(X\leq g^{-1}(y))=F_X(g^{-1}(y))
-  \end{align*}
-  \begin{align*}
-      f_Y(y)&=F'_Y(y)=F'_X(g^{-1}(y))= \frac{d}{dy}g^{-1}(y)\cdot F'_X(g^{-1}(y))=\frac{d}{dy}g^{-1}(y)\cdot f_X(g^{-1}(y))
-  \end{align*}
-\end{proof}
+% \subsection{Proposition 2.8}
+% \begin{boks}{Proposition 2.8}
+% Let $X$ be a continuous random variable with pdf $X$, let $g$ be a strictly increasing or strictly decreasing, differentiable function, and let $Y = g(X)$. Then $Y$ has pdf
+% \begin{align*}
+%     f_Y(y) = \bigg| \frac{d}{dy}g^{-1}(y)\bigg| f_X(g^{-1}(y))
+% \end{align*}
+% for $y$ in range of $Y$.
+% \end{boks}
+% \begin{proof}
+%   \begin{align*}
+%       F_Y(y)&=P(Y\leq y)=P(g(X)\leq y)=P(X\leq g^{-1}(y))=F_X(g^{-1}(y))
+%   \end{align*}
+%   \begin{align*}
+%       f_Y(y)&=\big(F_Y(y)\big)'=\big(F_X(g^{-1}(y))\big)'= \frac{d}{dy}g^{-1}(y)\cdot F'_X(g^{-1}(y))=\frac{d}{dy}g^{-1}(y)\cdot f_X(g^{-1}(y))
+%   \end{align*}
+% \end{proof}
 
 \subsection{Expected Value}
 \begin{boks}{Defintion 2.9}
@@ -165,16 +165,19 @@ By proposition 2.12, $E[g(X)] = \int_{-\infty}^\infty g(x)f_X(x)dx$, we have
   \end{align*}
 \end{boks}
 \begin{proof}
-  Direct computaion gives
+  By partial integration we get
   \begin{align*}
-    E[X] = \int_0^\infty x \lambda e^{-\lambda x}dx = \frac{1}{\lambda}
+    E[X] = \int_0^\infty x \lambda e^{-\lambda x}dx &= \Big[ -x \ e^{-\lambda x} \Big]_0^\infty + \int_0^\infty e^{-\lambda x} dx \\
+    &= \Big[ \frac{1}{-\lambda} e^{-\lambda x} \Big]_0^\infty = \frac{1}{\lambda}
   \end{align*}
   by partial integration. For the variance we need $E[X^2]$:
   \begin{align*}
-    E[X^2] = \int_0^\infty x^2 \lambda e^{-\lambda x}dx = \frac{2}{\lambda^2}
+    E[X^2] = \int_0^\infty x^2 \lambda e^{-\lambda x}dx &= \Big[-x^2 e^{-\lambda x}\Big]_0^\infty + \int_0^\infty 2x \ e^{-\lambda x} dx \\
+    &= \Big[ \frac{2x}{-\lambda} e^{-\lambda x} \Big]_0^\infty + \int_0^\infty \frac{2}{\lambda}e^{-\lambda x} dx \\
+    &= \Big[ \frac{2}{\lambda^2} e^{-\lambda x} \Big]_0^\infty = \frac{2}{\lambda^2}
   \end{align*}
   This gives
   \begin{align*}
-    \var[X] = E[X^2] - (E[X])^2 = \frac{1}{\lambda^2}
+    \var[X] = E[X^2] - (E[X])^2 = \frac{2}{\lambda^2} - \frac{1}{\lambda^2} =  \frac{1}{\lambda^2}
   \end{align*}
 \end{proof}
