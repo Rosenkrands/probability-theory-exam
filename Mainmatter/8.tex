@@ -21,11 +21,11 @@
 \end{boks}
 We ofthen think of the index $n$ as discrete time and say that $X_n$ is the \textit{state} of the chain at time $n$, where the state space $S$ may be finite or coutably infinte.
 
-In general, the probability $P(X_{n + 1} = j | X_n = i)$ depends in $i,j$, and $n$. It is, however, often the case that there is no dependence on $n$. We call such chains \textit{time-homogenous} and restrict our attention to these chains. Since the conditional probability in the definition thus depends only on $i$ and $j$, we use the notation
+% In general, the probability $P(X_{n + 1} = j | X_n = i)$ depends in $i,j$, and $n$. It is, however, often the case that there is no dependence on $n$. We call such chains \textit{time-homogenous} and restrict our attention to these chains. Since the conditional probability in the definition thus depends only on $i$ and $j$, we use the notation
 \begin{align*}
   p_{ij} = P(X_{n + 1} = j | X_n = i), \quad i,j \in S
 \end{align*}
-and call these the \textit{transition probabilities} of the Markov chain. Thus, if the chain is in state \textit{i}, the probabilities $p_{ij}$ desribe how the chain chooses which state to jump to necxt. Obviously, the transition probabilities have to satisfy the following two criteria:
+% and call these the \textit{transition probabilities} of the Markov chain. Thus, if the chain is in state \textit{i}, the probabilities $p_{ij}$ desribe how the chain chooses which state to jump to necxt. Obviously, the transition probabilities have to satisfy the following two criteria:
 \begin{align*}
   \text{(a)} \ p_{ij} \geq 0 \quad \text{for all} \ i,j \in S, \qquad
   \text{(b)} \ \sum_{j \in S} p_{ij} = 1 \quad \text{for all} \ i \in S
@@ -33,7 +33,7 @@ and call these the \textit{transition probabilities} of the Markov chain. Thus, 
 
 \begin{figure}[h]
   \centering
-  \begin{tikzpicture}[roundnode/.style={circle, draw=black!60, fill=black!5, very thick, minimum size=7mm}]
+  \begin{tikzpicture}[roundnode/.style={circle, draw=black, thick, minimum size=7mm}]
     % Place nodes
     \node[roundnode] (nul)                                        {0};
     \node[roundnode] (et)   [right of = nul, node distance=15mm]  {1};
@@ -85,8 +85,8 @@ and call these the \textit{transition probabilities} of the Markov chain. Thus, 
 \begin{boks}{Definition 8.2}
   If $p_{ij}^{(n)} > 0$ for some $n$, we say that state $j$ is \textit{accesible} from state $i$, written $i \rightarrow j$. If $j \rightarrow i$, we say that $i$ and $j$ \textit{communicate} and write this $i \leftrightarrow j$.
 \end{boks}
-In general, if we fix a state $i$ in the state space of a Mrkov vhain, we can find all states that communicate with $i$ and form a \textit{communicating class} containing $i$. It is easy to realize that not only does $i$ communicate with all states in this class but they all communicate with each other. By convention, every state communicates with itself (it can reach itself in $0$ steps) so every state belongs to a class.
-If you wish to be more mathemaical, the relastion ``$\leftrightarrow$'' is an equivalence relation and thus divides the state space into equivalence classes that are precisely the communicating classes.
+% In general, if we fix a state $i$ in the state space of a Mrkov vhain, we can find all states that communicate with $i$ and form a \textit{communicating class} containing $i$. It is easy to realize that not only does $i$ communicate with all states in this class but they all communicate with each other. By convention, every state communicates with itself (it can reach itself in $0$ steps) so every state belongs to a class.
+% If you wish to be more mathemaical, the relastion ``$\leftrightarrow$'' is an equivalence relation and thus divides the state space into equivalence classes that are precisely the communicating classes.
 \begin{boks}{Definition 8.3}
   If all states in $S$ communicate with each other, the Markov chain is said to be \textit{irreducible}.
 \end{boks}
@@ -182,23 +182,23 @@ This gives the stationary distribution
 \end{boks}
 
 In our chain we observe that a state can reach itself in either $4$ or $6$ steps, which means that all states in our chain is periodic with period $2$, because this is the greatest common divisor of $4$ and $6$.
-\subsubsection{Convergence to the Stationary Distribution}
-\begin{boks}{Definition 8.7}
-  Let $p_{ij}^{(n)}$ be the $n$-step transition probabilities of a Markov chain.
-  If there exists a probability distribution \textbf{q} on $S$ such that
-  \begin{align*}
-    p_{ij}^{(n)} \rightarrow q_j \quad \text{as} \quad n \rightarrow \infty \quad \text{for all} i,j \in S
-  \end{align*}
-  we call \textbf{q} the \textit{limit distribution} of the Markov chain.
-\end{boks}
-\begin{boks}{Theorem 8.1}
-  Consider an irreducible, positive recurrent, and aperiodic Markov chain with stationary distribution $\boldsymbol{\pi}$ and $n$-step transition probabilities $p_{ij}^{(n)}$. Then
-  \begin{align*}
-    p_{ij}^{(n)} \rightarrow \pi_j \quad \text{as} \quad n \rightarrow \infty
-  \end{align*}
-  for all $i,j \in S$.
-\end{boks}
-An irreducible, positve recurrent, and aperiodic Markov chain is called \textit{ergodic}.
+% \subsubsection{Convergence to the Stationary Distribution}
+% \begin{boks}{Definition 8.7}
+%   Let $p_{ij}^{(n)}$ be the $n$-step transition probabilities of a Markov chain.
+%   If there exists a probability distribution \textbf{q} on $S$ such that
+%   \begin{align*}
+%     p_{ij}^{(n)} \rightarrow q_j \quad \text{as} \quad n \rightarrow \infty \quad \text{for all} i,j \in S
+%   \end{align*}
+%   we call \textbf{q} the \textit{limit distribution} of the Markov chain.
+% \end{boks}
+% \begin{boks}{Theorem 8.1}
+%   Consider an irreducible, positive recurrent, and aperiodic Markov chain with stationary distribution $\boldsymbol{\pi}$ and $n$-step transition probabilities $p_{ij}^{(n)}$. Then
+%   \begin{align*}
+%     p_{ij}^{(n)} \rightarrow \pi_j \quad \text{as} \quad n \rightarrow \infty
+%   \end{align*}
+%   for all $i,j \in S$.
+% \end{boks}
+% An irreducible, positve recurrent, and aperiodic Markov chain is called \textit{ergodic}.
 % \begin{boks}{Proposition 8.5}
 %   Consider an ergodic Markov chain with stationary distrbution $\boldsymbol{\pi}$ and choose two states $i$ and $j$. Let $\tau_i$ be the return tome to state $i$, and let $N_j$ be the number of visits to $j$ between consecutive visits to $i$. Then
 %   \begin{align*}
