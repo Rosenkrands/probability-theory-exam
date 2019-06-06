@@ -1,13 +1,13 @@
 % !TEX root = ../main.tex
-\begin{boks}{Definition 3.10}
-  Let $y$ be random variable and $B$ an event with $P(B)>0$. The \textit{conditional expectation} of $Y$ given $B$ is defined as
-  \begin{align*}
-    E[Y|B] =  \begin{cases}
-                \sum_{k = 1}^\infty y_k P(Y = y_k|B) & \text{if $Y$ is discrete with range $\{y_1, y_2, \ldots\}$}\\
-                \int_{-\infty}^\infty yf_Y(y|B)dy & \text{if $Y$ is continuous}
-              \end{cases}
-  \end{align*}
-\end{boks}
+% \begin{boks}{Definition 3.10}
+%   Let $y$ be random variable and $B$ an event with $P(B)>0$. The \textit{conditional expectation} of $Y$ given $B$ is defined as
+%   \begin{align*}
+%     E[Y|B] =  \begin{cases}
+%                 \sum_{k = 1}^\infty y_k P(Y = y_k|B) & \text{if $Y$ is discrete with range $\{y_1, y_2, \ldots\}$}\\
+%                 \int_{-\infty}^\infty yf_Y(y|B)dy & \text{if $Y$ is continuous}
+%               \end{cases}
+%   \end{align*}
+% \end{boks}
 
 % \begin{boks}{Definition 3.11}
 %   Suppose that $X$ and $Y$ are discrete. We define
@@ -15,33 +15,33 @@
 %     E[Y|X=x_j] = \sum_{k=1}^\infty y_k p_Y(y_k|x_j).
 %   \end{align*}
 % \end{boks}
-
-\begin{boks}{Definition 3.12}
-  Suppose that $X$ and $Y$ are jointly continuous. We define
-  \begin{align*}
-    E[Y|X = x] = \int_{-\infty}^\infty y f_Y(y|x)dx.
-  \end{align*}
-\end{boks}
-
-Following the usual intuitive interpretation, this is the expected value for $Y$ if we know that $X = x$. The law of total expectation now takes the following form.
-
-\begin{boks}{Propostion 3.17}
-  Suppose that $X$ and $Y$ are jointly continuous. Then
-  \begin{align*}
-    E[Y] = \int_{-\infty}^\infty E[Y|X = x] f_X(x)dx.
-  \end{align*}
-\end{boks}
-\begin{proof}
-  By definiton of expected value and Proposition 3.6 (a)
-  \begin{align*}
-    E[Y] =  \int_{-\infty}^\infty y f_Y(y)dy = \int_{-\infty}^\infty \int_{-\infty}^\infty yf_Y(y|x)f_X(x)dx \ dy
-  \end{align*}
-  where we cahnge the order of integration to obtain
-  \begin{align*}
-    E[Y] = \int_{-\infty}^\infty\int_{-\infty}^\infty y f_Y(y|x)dy f_X(x)dx
-  \end{align*}
-  where the inner integral equals $E[Y|X = x]$ by definition, and we are done.
-\end{proof}
+%
+% \begin{boks}{Definition 3.12}
+%   Suppose that $X$ and $Y$ are jointly continuous. We define
+%   \begin{align*}
+%     E[Y|X = x] = \int_{-\infty}^\infty y f_Y(y|x)dx.
+%   \end{align*}
+% \end{boks}
+%
+% Following the usual intuitive interpretation, this is the expected value for $Y$ if we know that $X = x$. The law of total expectation now takes the following form.
+%
+% \begin{boks}{Propostion 3.17}
+%   Suppose that $X$ and $Y$ are jointly continuous. Then
+%   \begin{align*}
+%     E[Y] = \int_{-\infty}^\infty E[Y|X = x] f_X(x)dx.
+%   \end{align*}
+% \end{boks}
+% \begin{proof}
+%   By definiton of expected value and Proposition 3.6 (a)
+%   \begin{align*}
+%     E[Y] =  \int_{-\infty}^\infty y f_Y(y)dy = \int_{-\infty}^\infty \int_{-\infty}^\infty yf_Y(y|x)f_X(x)dx \ dy
+%   \end{align*}
+%   where we cahnge the order of integration to obtain
+%   \begin{align*}
+%     E[Y] = \int_{-\infty}^\infty\int_{-\infty}^\infty y f_Y(y|x)dy f_X(x)dx
+%   \end{align*}
+%   where the inner integral equals $E[Y|X = x]$ by definition, and we are done.
+% \end{proof}
 
 % \subsection{Conditional Expectation as a Random Variable}
 %
@@ -81,18 +81,32 @@ Following the usual intuitive interpretation, this is the expected value for $Y$
     Var[Y|X] = E\Big[(Y - E[Y|X])^2|X\Big].
   \end{align*}
 \end{boks}
-
-Note that the conditonal varince is also a random variable and we think of it as the variance of $Y$ given the value $X$. In particular,  if we have the observed $X = x$, then we can denote and defined
-\begin{align*}
-  Var[Y|X = x] = E\Big[(Y - E[Y|X = x])^2|X = x\Big].
-\end{align*}
-also note that if $X$ and $Y$ are independent, $E[Y|X]=E[Y]$, and the definition boils down to the regular variance. There is an analog of Corollary 2.2, which we leave to the reader to prove.
+%
+% Note that the conditonal varince is also a random variable and we think of it as the variance of $Y$ given the value $X$. In particular,  if we have the observed $X = x$, then we can denote and defined
+% \begin{align*}
+%   Var[Y|X = x] = E\Big[(Y - E[Y|X = x])^2|X = x\Big].
+% \end{align*}
+% also note that if $X$ and $Y$ are independent, $E[Y|X]=E[Y]$, and the definition boils down to the regular variance. There is an analog of Corollary 2.2, which we leave to the reader to prove.
 
 \begin{boks}{Corollary 3.7}
   \begin{align*}
-    Var[Y|X] = E\Big[[Y^2|X]\Big] - (E[Y|X])^2
+    Var[Y|X] = E\Big[Y^2|X\Big] - (E[Y|X])^2
   \end{align*}
 \end{boks}
+
+\begin{proof}
+  \begin{align*}
+    \var[Y|X] &=
+    E\Big[ (Y - E[Y|X])^2 | X \Big] \\ &=
+    \int_{-\infty}^\infty \big(y - E[Y|X]\big)^2 f_Y(y|x) dx \\ &=
+    \int_{-\infty}^\infty \big(y^2 - 2yE[Y|X] + E[Y|X]^2\big) f_Y(y|x) dx \\ &=
+    \int_{-\infty}^\infty y^2 f_Y(y|x) dx -
+    2E[Y|X]\int_{-\infty}^\infty y f_Y(y|x) dx +
+    \big(E[Y|X]\big)^2 \int_{-\infty}^\infty f_Y(y|x) dx \\ &=
+    E[Y^2|X] - 2\big(E[Y|X]\big)^2 + E[Y|X]^2 \\ &=
+    E[Y^2|X] - \big(E[Y|X]\big)^2
+  \end{align*}
+\end{proof}
 
 There is also a ``law of total variance'', which looks slightly more complicated than that of total expectation.
 
@@ -134,7 +148,7 @@ There is also a ``law of total variance'', which looks slightly more complicated
 %
 \begin{boks}{Proposition 3.21}
   \begin{align*}
-    Var[X + Y = Var[x] + Var[Y] + 2Cov[X, Y].
+    Var[X + Y] = Var[X] + Var[Y] + 2Cov[X, Y].
   \end{align*}
 \end{boks}
 
@@ -149,7 +163,7 @@ There is also a ``law of total variance'', which looks slightly more complicated
   and we are done.
 \end{proof}
 
-\textbf{Måske kan du vælge bivariate normal i stedet hvis du har tid og føler dig klog!}
+% \textbf{Måske kan du vælge bivariate normal i stedet hvis du har tid og føler dig klog!}
 
 % \begin{boks}{Proposition 3.22}
 %   Let $X, Y$, and $Z$ be random variables and let $a$ and $b$ be real numbers. Then

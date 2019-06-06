@@ -80,7 +80,15 @@ Let $X$ be any random variable, and let $a$ and $b$ be real numbers. Then
 \end{boks}
 
 \begin{proof}
-We prove this in the discrete case, for $a > 0$. Let $Y = aX + b$, and note that $Y$ is a discrete random variable and by definition 2.8 expected value
+We prove this in the discrete case, for $a > 0$. Let $Y = aX + b$, and note that $Y$ is a discrete random variable and by definition 2.8 and the following
+\begin{align*}
+  p_Y(y_k) =
+  P(Y = y_k) =
+  P(aX + b = y_k) =
+  P\left( X = \frac{y_k - b}{a} \right) =
+  p_X\left( \frac{y_k - b}{a} \right)
+\end{align*}
+we find that the expectation of $Y$ can be rewritten as follows
 \begin{align*}
     E[Y] &= \sum_{k=1}^\infty y_kp_Y(y_k) = \sum_{k=1}^\infty y_kp_X\bigg(\frac{y_k - b}{a}\bigg)\\
     &= \sum_{k=1}^\infty (ax_k + b) p_X(x_k) \\
