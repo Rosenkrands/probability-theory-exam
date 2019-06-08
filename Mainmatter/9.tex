@@ -40,22 +40,33 @@
 \begin{proof}
   Let us first make sure that the algorithm terminates. The probability in any given step 2 to accept $Y$ is, by Corollary 3.2,
   \begin{align*}
-    P\left( U \leq \frac{f(Y)}{cg(y)} \right) &=
-    \int_{\mathbb{R}} P\left( U \leq \frac{f(Y)}{cg(y)} \right) g(y)dy \\
-    &= \int_{\mathbb{R}} \frac{f(Y)}{cg(y)} g(y)dy =
+    P((X, Y) \in B) = \int_{\mathbb{R}} P((x, Y) \in B)f_X(x) dx
+  \end{align*}
+  where
+  \begin{align*}
+    (Y, U) \quad \text{and} \quad B = \left\{(Y, U) \ : \ U \leq \frac{f(y)}{cg(y)}\right\}
+  \end{align*}
+  \begin{align*}
+    P\left( U \leq \frac{f(y)}{cg(y)} \right) &=
+    \int_{\mathbb{R}} P\left( U \leq \frac{f(y)}{cg(y)} \right) g(y)dy \\
+    &= \int_{\mathbb{R}} \frac{f(y)}{cg(y)} g(y)dy =
     \frac{1}{c}\int_\mathbb{R}f(y)dy =
     \frac{1}{c}
   \end{align*}
   where we used the independence of $U$ and $Y$ and the fact that $U \sim \unif[0,1]$. Hence, the number of iterations until we accept a value has a geometric distribution with success probability $1/c$. The algorithm therefore always terminates in a number of steps with mean $c$ from which it also follows that we should choose $c$ as small as possible.
 
-  Next we turn to the question of why this gives the corresct distribution. To show this, we will show that the consitional distribution of $Y$, given acceptance, is the same as the distribution of $X$. Recalling the definition of conditional probability and the fact that the probability of acceptance is $1/c$, we get
+  Next we turn to the question of why this gives the corresct distribution. To show this, we will show that the conditional distribution of $Y$, given acceptance, is the same as the distribution of $X$. Recalling the definition of conditional probability and the fact that the probability of acceptance is $1/c$, we get from
   \begin{align*}
-    P\left(Y \leq x \ \bigg| \ U \leq \frac{f(Y)}{cg(y)} \right) =
-    cP\left(Y \leq x \ \cap \ U \leq \frac{f(Y)}{cg(y)}\right)
+    P(A|B) = \frac{P(A \cap B)}{P(B)}
+  \end{align*}
+  that
+  \begin{align*}
+    P\left(Y \leq x \ \bigg| \ U \leq \frac{f(y)}{cg(y)} \right) =
+    \frac{P\left(Y \leq x \ \cap \ U \leq \frac{f(y)}{cg(y)}\right)}{1/c} = cP\left(Y \leq x \ \cap \ U \leq \frac{f(y)}{cg(y)}\right)
   \end{align*}
   By independence, the joint pdf of $(U, Y)$ is $f(u,y) = g(y)$, and the above expression becomes
   \begin{align*}
-    cP\left(Y \leq x \ \cap \ U \leq \frac{f(Y)}{cg(y)}\right) &= c \int_{-\infty}^x \int_0^{f(y)/cg(y)} g(y)du \ dy \\
+    cP\left(Y \leq x \ \cap \ U \leq \frac{f(y)}{cg(y)}\right) &= c \int_{-\infty}^x \int_0^{f(y)/cg(y)} g(y)du \ dy \\
     &= c \int_{-\infty}^x \frac{f(y)}{cg(y)}g(y)dy = P(X \leq x)
   \end{align*}
   which is what we wanted to prove.

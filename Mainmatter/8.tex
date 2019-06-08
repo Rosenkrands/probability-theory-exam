@@ -159,12 +159,12 @@ This gives the stationary distribution
 \begin{align*}
   \pi = \left[\frac{1}{5}, \frac{1}{5}, \frac{1}{5}, \frac{1}{5}, \frac{1}{10}, \frac{1}{10}\right]
 \end{align*}
-\begin{boks}{Definition 8.6}
-  Let $i$ be a recurrent state. If $E_i[\tau_i] < \infty$, then $i$ is said to be \textit{positive recurrent}. If $E_i[\tau_i] = \infty$, $i$ is said to be \textit{null recurrent}.
-\end{boks}
-\begin{boks}{Corollary 8.4}
-  For an irreducible Markov chain, there are three possibilities: \textbf{(a)} all states are positive recurrent, \textbf{(b)} all states are null recurrent, and \textbf{(c)} all states are transient.
-\end{boks}
+% \begin{boks}{Definition 8.6}
+%   Let $i$ be a recurrent state. If $E_i[\tau_i] < \infty$, then $i$ is said to be \textit{positive recurrent}. If $E_i[\tau_i] = \infty$, $i$ is said to be \textit{null recurrent}.
+% \end{boks}
+% \begin{boks}{Corollary 8.4}
+%   For an irreducible Markov chain, there are three possibilities: \textbf{(a)} all states are positive recurrent, \textbf{(b)} all states are null recurrent, and \textbf{(c)} all states are transient.
+% \end{boks}
 % \begin{boks}{Proposition 8.4}
 %   Consider an irreducible Markov chain $\{ X_n \}$. Then,
 %   \begin{align*}
@@ -173,15 +173,15 @@ This gives the stationary distribution
 %   If this is the case, $\boldsymbol{\pi}$ is unique and has $\pi_j > 0$ for all $j \in S$.
 % \end{boks}
 
-\begin{boks}{Definition 8.8}
-  The \textit{period} of state $i$ is defined as
-  \begin{align*}
-    d(i) = \gcd \{ n \geq 1 \ : \ p_{ii}^{(n)} > 0 \}
-  \end{align*}
-  the greatest common divisor of lengths of cycles through which it is possible to return to $i$. If $d(i) = 1$, state $i$ is said to be \textit{aperiodic}; otherwise it is called \textit{periodic}. Note that this is a class property, which means if $i \leftrightarrow j$ and either $i$ or $j$ is periodic so is the other. Likewise for aperiodic.
-\end{boks}
-
-In our chain we observe that a state can reach itself in either $4$ or $6$ steps, which means that all states in our chain is periodic with period $2$, because this is the greatest common divisor of $4$ and $6$.
+% \begin{boks}{Definition 8.8}
+%   The \textit{period} of state $i$ is defined as
+%   \begin{align*}
+%     d(i) = \gcd \{ n \geq 1 \ : \ p_{ii}^{(n)} > 0 \}
+%   \end{align*}
+%   the greatest common divisor of lengths of cycles through which it is possible to return to $i$. If $d(i) = 1$, state $i$ is said to be \textit{aperiodic}; otherwise it is called \textit{periodic}. Note that this is a class property, which means if $i \leftrightarrow j$ and either $i$ or $j$ is periodic so is the other. Likewise for aperiodic.
+% \end{boks}
+%
+% In our chain we observe that a state can reach itself in either $4$ or $6$ steps, which means that all states in our chain is periodic with period $2$, because this is the greatest common divisor of $4$ and $6$.
 % \subsubsection{Convergence to the Stationary Distribution}
 % \begin{boks}{Definition 8.7}
 %   Let $p_{ij}^{(n)}$ be the $n$-step transition probabilities of a Markov chain.
