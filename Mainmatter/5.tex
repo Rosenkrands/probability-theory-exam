@@ -98,11 +98,11 @@
   \begin{align*}
     \var[Y|X] &=
     E\Big[ (Y - E[Y|X])^2 | X \Big] \\ &=
-    \int_{-\infty}^\infty \big(y - E[Y|X]\big)^2 f_Y(y|x) dx \\ &=
-    \int_{-\infty}^\infty \big(y^2 - 2yE[Y|X] + E[Y|X]^2\big) f_Y(y|x) dx \\ &=
-    \int_{-\infty}^\infty y^2 f_Y(y|x) dx -
-    2E[Y|X]\int_{-\infty}^\infty y f_Y(y|x) dx +
-    \big(E[Y|X]\big)^2 \int_{-\infty}^\infty f_Y(y|x) dx \\ &=
+    \int_{-\infty}^\infty \big(y - E[Y|X]\big)^2 f_Y(y|x) dy \\ &=
+    \int_{-\infty}^\infty \big(y^2 - 2yE[Y|X] + E[Y|X]^2\big) f_Y(y|x) dy \\ &=
+    \int_{-\infty}^\infty y^2 f_Y(y|x) dy -
+    2E[Y|X]\int_{-\infty}^\infty y f_Y(y|x) dy +
+    \big(E[Y|X]\big)^2 \int_{-\infty}^\infty f_Y(y|x) dy \\ &=
     E[Y^2|X] - 2\big(E[Y|X]\big)^2 + E[Y|X]^2 \\ &=
     E[Y^2|X] - \big(E[Y|X]\big)^2
   \end{align*}
